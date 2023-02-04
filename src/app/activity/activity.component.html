@@ -1,0 +1,9 @@
+<div class="w-[80%] flex flex-col justify-center mx-auto rounded-md">
+    <p class="text-xl font-semibold mb-8">Today's Activities</p>
+    <div *ngFor="let activity of activities[0]" class="bg-gradient-to-r from-[#bc5bd76d] to-[#95a8e2] p-4 mb-4 rounded-lg  flex justify-between items-center" >
+        <p class="font-semibold ">{{activity.title}}</p>
+        <a  href="https://icons8.com/icon/60450/play-button-circled">
+            <img  class="w-[60%]" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAADsklEQVR4nO2aTWxNURCAbwmKEBJ/C0Js2BMRwZxXf5WUiuTO9LVoYiE2Qmws2VILQiK2IhESG7Q0wUz9paR2Qv3EQon4qQUJqrQy97VR7X2v75577rsvYpJJXtK+eee7M2fOzJzref/lH5WVt+unA+MWI9gETM0g1GkYPwFTj6p+NoJP9G/6P+Ym1QLXTvPKQapbqieYNmwAxlYQ+mmE+qNo7jt4NSNUr7a8Usvye/5EI7QfGN9EXXwBqNfAuA+4sbIkEKuFNoLgC1cAIfrc3MQNiQGo64HxeIIAwxTPqOedQlRdr5sNQh2lg6CcMj1Yd3fbLCcQwLQgcHepIWQQBp/pGmJBrLzlzwzSaFoQklPdk8D+HEtPNFamEk6SP8ysUrQROpX64mW44onIKTb9RVOoZtpofZQ0+zTtBZv8+ryoQ1NPbIv4/QrsZw3jqxLB7B3dG0KvbUCGlC4HDNPnZEGwq+DG1wLQ0vC3oXaAG+YC01nD1JcUDLCfzQuiVayVUaHv4fbqloLQnWRAqDl/P2FRig8Y7cn7dPq9CmDabhWyUlB7q9sbpoZ5Y4u1UcYf3ihS01EzKdg/Ql8ceqUmBISOxnk6XpGSuVE/H5jOu9k/eCQMpNn6yQj99CJKVZu/zDDdiwXCdGmEYa0y7V2Mvzwb6T84JiP+TiP01vIBdoZ5pDvGk+nzYsi61m2TgemQpvGIv/s+DKQnjps9B7Lmdv1CYLwYK+2XAwhwdrFOVeKCdMcC6fcqYs7EdB7Q6yC04lW8/gV/bFQA/Q6wv9sIfrD7XXziNP3agGj6Bab77tOvYFMco0s6do0rBmBVG80zQudcHIjAdNhtiVIEiP/IH699hMsSH8JLlNpptkWjaqH+ICO01TC9dAVggrDCH6FFYwAjdM0lSOaGv8gwtjgFkAFvCF7J636ditsaHjretE6nEiWssM59qzsIEtROuAMY3yUFYALFLt1zeUFyewX32Y5pgOlhsgA06I09BSFyII2Vqc56ZRQIoc6iJ456P5H2gk2YMvUB49qiIIaE2MnUFy4jQuqYZ3U/yPSgfEIK20fd4Pm9kp1RLtcKVdfrZltB/IGhBXHaYAfh9FQHFp4L0euvNMIMBNv1sslL5DI0wTGo+dsTpxO9e9eDL8lQA6HOyCnWVoKMpiW5YJczCMZXemKn8gZELtz87EB3aVMg9moVqwWgdWp1LdobrBbcpGNMI3g5eIFG6OPgSzX62TA+1vZUOzttilbc2TzF+UL+i1ce8hud+Nex41vkvgAAAABJRU5ErkJggg==">
+        </a>
+    </div>
+</div>
