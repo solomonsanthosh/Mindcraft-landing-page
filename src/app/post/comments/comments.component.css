@@ -1,0 +1,16 @@
+.post {
+    border-bottom: 1px solid rgb(228, 228, 228);
+    border-left: 1px solid rgb(228, 228, 228);
+    border-right: 1px solid rgb(228, 228, 228);
+}
+textarea {
+    background-color: #f6f6f6;
+    border-bottom: 1px solid rgb(228, 228, 228);
+    resize: none;
+    padding: 2rem;
+    color: #5d5d5d ;
+}
+
+textarea:focus {
+    outline:1px solid rgb(228, 228, 228);
+}

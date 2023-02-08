@@ -1,0 +1,29 @@
+<div class="w-[80%] mx-auto">
+  <h1 class="text-2xl font-semibold my-[3rem]">
+    let's do a quick mindcraft assessment to find out what you are dealing with.
+  </h1>
+
+  <div
+    class="flex flex-col items-start mt-3"
+    *ngFor="let question of questions"
+  >
+    <Label class="my-3">{{ question.id }}. {{ question.question }}</Label>
+    <div class="mb-3 flex items-center" *ngFor="let option of question.options">
+      <input
+        class="mr-3"
+        type="radio"
+        value="{{ option.type }}"
+        name="{{ question.id }}"
+        id=""
+        (change)="onChange($event)"
+      />
+      <Label>{{ option.text }}</Label>
+    </div>
+  </div>
+  <button
+    class="my-7 px-4 py-2 rounded-lg shadow-md bg-[#65d44f] font-bold"
+    (click)="submit()"
+  >
+    Submit
+  </button>
+</div>

@@ -1,0 +1,46 @@
+<div class="w-[100vw] h-screen flex relative bg-[#f6f6f6]">
+  <app-nav class="w-[20%]"></app-nav>
+  <div class="w-[80%] min-h-full py-5 relative overflow-y-scroll scroll-smooth">
+    <div class="w-[80%] post mx-auto py-2 px-4">
+      <h1 class="text-[1.2rem] font-medium text-[#4888d2]">
+        @{{ currentPost.owner.name }}
+      </h1>
+      <h1 class="text-[1.5rem] font-bold">
+        {{ currentPost.title }}
+      </h1>
+      <p class="text-[1.5rem] font-extralight text-[#5d5d5d] py-1">
+        {{ currentPost.content }}
+      </p>
+    </div>
+    <h1 class="mx-auto py-2 w-[80%] text-[1.2rem] font-bold text-[#48d2a9]">
+      Comments
+    </h1>
+    <div class="w-[80%] post mx-auto">
+      <textarea
+        placeholder="Add your comment..."
+        class="w-full textarea"
+        name="post"
+        id=""
+        cols="30"
+        rows="4"
+      ></textarea>
+      <button
+        class="text-white my-5 ml-5 p-2 px-4 rounded-full shadow-sm bg-[#4888d2]"
+      >
+        Add Comment
+      </button>
+    </div>
+    <div
+      class="w-[80%] post mx-auto py-2 px-4"
+      *ngFor="let content of contents[0]"
+    >
+      <h1 class="text-[1rem] font-medium text-[#4888d2]">
+        {{ content.owner.name }}
+      </h1>
+      <h1 class="text-[1rem] font-bold">{{ content.title }}</h1>
+      <p class="font-extralight text-[#5d5d5d] py-1">
+        {{ content.content }}
+      </p>
+    </div>
+  </div>
+</div>

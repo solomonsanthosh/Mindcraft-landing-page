@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "site": "mindcrafts",
+    "public": "dist/mindcraft",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

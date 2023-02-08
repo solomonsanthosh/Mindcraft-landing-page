@@ -1,22 +1,30 @@
-
-<div class=" w-[100%]  min-h-screen  bg-[#f6f6f6] relative ">
-    <div class="w-[80%] mx-auto flex justify-around items-center h-[40vh] bg-[#ffffff] relative  shadow-lg">
-        <div class="h-full flex flex-col justify-evenly">
-            <p class="text-3xl font-semibold">Good morning user</p>
-            <div>
-    
-                <p class="mb-4">Activities completed</p>
-                <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
-            </div>
-            <p><i>“Tough times never last, but tough people do!” — Robert Schuller</i></p>
-        </div>
-        <div class="z-10"><img class="" src="../../assets/guitar.png" alt=""></div>
-        <div class="absolute top-0 right-0 w-[30vw] bg-slate-700 h-[40vh]"></div>
+<div class="w-[100%] min-h-screen pt-[6rem] bg-[#f6f6f6] relative">
+  <div
+    class="w-[80%] mx-auto flex justify-around items-center h-[40vh] bg-[#ffffff] relative shadow-lg"
+  >
+    <div class="h-full flex flex-col justify-evenly">
+      <p class="text-3xl font-semibold">
+        Good morning
+        {{
+          user.name.split(" ")[0].charAt(0).toUpperCase() +
+            user.name.split(" ")[0].slice(1).toLowerCase()
+        }}
+      </p>
+      <div>
+        <p class="mb-4">Activities completed</p>
+        <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+      </div>
+      <p>
+        <i>“Tough times never last, but tough people do!” — Robert Schuller</i>
+      </p>
     </div>
-    
+    <div class="z-10">
+      <img class="" src="../../assets/guitar.png" alt="" />
+    </div>
+    <div class="absolute top-0 right-0 w-[30vw] bg-slate-700 h-[40vh]"></div>
+  </div>
 
-   
-    <app-songs></app-songs>
-   
-    <app-activity></app-activity>
+  <app-songs></app-songs>
+
+  <app-activity></app-activity>
 </div>

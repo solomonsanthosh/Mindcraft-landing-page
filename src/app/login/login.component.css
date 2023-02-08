@@ -1,0 +1,14 @@
+input[type="text"],input[type="email"] ,input[type="password"] {
+    background-color: #f6f6f6;
+    border-radius: 5px;
+    padding: .5rem 1rem;
+}
+
+.title {
+    transform: translate(-50%,-50%);
+    font-size: 3rem;
+}
+::placeholder { 
+    
+    opacity: .5; 
+  }
