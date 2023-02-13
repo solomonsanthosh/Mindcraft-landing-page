@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
-
+import { HotToastModule } from '@ngneat/hot-toast';
 // page components
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SongsComponent } from './songs/songs.component';
@@ -41,6 +41,11 @@ import { NavService } from 'src/services/nav.service';
   ],
   imports: [
     BrowserModule,
+    HotToastModule.forRoot({
+      reverseOrder: true,
+      dismissible: true,
+      autoClose: false,
+    }),
     FormsModule,
     AppRoutingModule,
     HttpClientModule,

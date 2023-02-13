@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { HotToastService } from '@ngneat/hot-toast';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { AuthService } from 'src/services/auth.service';
@@ -11,7 +11,11 @@ import { NavService } from 'src/services/nav.service';
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit {
-  constructor(private auth: AuthService, private nav: NavService) {}
+  constructor(
+    private auth: AuthService,
+    private nav: NavService,
+    private toast: HotToastService
+  ) {}
   ngOnInit(): void {
     this.nav.hide();
   }
@@ -28,6 +32,19 @@ export class SignupComponent implements OnInit {
         password: form.form.value.password,
       };
       this.auth.SignUp(this.user);
+    } else {
+      this.toast.success('pls', {
+        duration: 5,
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+        },
+        iconTheme: {
+          primary: '#713200',
+          secondary: '#FFFAEE',
+        },
+      });
     }
   }
   openPopup() {

@@ -1,6 +1,5 @@
-<div class="w-[100vw] h-screen flex relative bg-[#f6f6f6]">
-  <app-nav class="w-[20%]"></app-nav>
-  <div class="w-[80%] min-h-full py-5 relative overflow-y-scroll scroll-smooth">
+<div class="min-h-screen pt-[4rem] justify-center flex relative bg-[#f6f6f6]">
+  <div class="w-[80%] min-h-full py-5 relative scroll-smooth">
     <div class="w-[80%] post mx-auto py-2 px-4">
       <h1 class="text-[1.2rem] font-medium text-[#4888d2]">
         @{{ currentPost.owner.name }}
@@ -21,10 +20,12 @@
         class="w-full textarea"
         name="post"
         id=""
+        [(ngModel)]="comment"
         cols="30"
         rows="4"
       ></textarea>
       <button
+        (click)="addComment()"
         class="text-white my-5 ml-5 p-2 px-4 rounded-full shadow-sm bg-[#4888d2]"
       >
         Add Comment

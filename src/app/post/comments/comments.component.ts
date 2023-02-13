@@ -9,8 +9,11 @@ import { PostService } from 'src/services/post.service';
 })
 export class CommentsComponent implements OnInit {
   contents: any[] = [];
+  comment: any;
   currentPost: any;
+
   id: any;
+  user: any;
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
@@ -24,9 +27,31 @@ export class CommentsComponent implements OnInit {
 
   ngOnInit() {
     this.currentPost = this.postService.getCurrentPost();
+    this.user = JSON.parse(localStorage.getItem('user')!);
     console.log(this.currentPost);
 
     this.getComments(this.id);
+  }
+  addComment() {
+    if (this.comment) {
+      this.http
+        .post(`http://localhost:8000/createcomment/`, {
+          postid: this.currentPost._id,
+          content: {
+            topic: this.user.topic,
+            post: this.currentPost._id,
+            owner: this.user._id,
+            content: this.comment,
+          },
+        })
+        .subscribe((res: any) => {
+          res.owner = { name: this.user.name };
+          this.contents[0] = [res, ...this.contents[0]];
+          console.log(this.contents);
+        });
+    } else {
+      console.log('enter a comment');
+    }
   }
   getComments(id: string) {
     this.http

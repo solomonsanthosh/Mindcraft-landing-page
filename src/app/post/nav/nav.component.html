@@ -1,9 +1,24 @@
 <div
   class="w-full side min-h-full flex flex-col justify-center items-center p-4"
 >
-  <div class="min-h-full flex flex-col justify-evenly font-semibold text-xl">
-    <h1 class=""># Home</h1>
-    <h1># Your posts</h1>
-    <h1># Success stories</h1>
+  <div class="min-h-full flex flex-col justify-evenly font-medium text-xl">
+    <button
+      (click)="emitTopicChange('explore')"
+      class="my-2 bg-gradient-to-r from-[#a143c3] to-[#5d7adc] py-2 px-5 rounded-full text-white"
+    >
+      Explore
+    </button>
+    <button
+      (click)="emitTopicChange('myposts')"
+      class="my-2 bg-gradient-to-r from-[#a143c3] to-[#5d7adc] py-2 px-5 rounded-full text-white"
+    >
+      Your posts
+    </button>
+    <button
+      (click)="emitTopicChange('story')"
+      class="my-2 bg-gradient-to-r from-[#a143c3] to-[#5d7adc] py-2 px-5 rounded-full text-white"
+    >
+      Success stories
+    </button>
   </div>
 </div>

@@ -94,4 +94,9 @@ export class AuthService {
 
     return user !== null ? true : false;
   }
+  logout() {
+    localStorage.setItem('user', null!);
+    this.userData = null;
+    this.router.navigate(['/signin']);
+  }
 }
