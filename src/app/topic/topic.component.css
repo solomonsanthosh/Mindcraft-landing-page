@@ -1,0 +1,13 @@
+.active {
+   
+    background-color: rgb(17, 143, 17);
+    
+}
+.disabled {
+    background-color: #767676;
+
+}
+
+.select{
+    outline:1px solid black;
+}

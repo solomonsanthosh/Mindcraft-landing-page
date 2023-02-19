@@ -33,21 +33,10 @@ export class SignupComponent implements OnInit {
       };
       this.auth.SignUp(this.user);
     } else {
-      this.toast.success('pls', {
-        duration: 5,
-        style: {
-          border: '1px solid #713200',
-          padding: '16px',
-          color: '#713200',
-        },
-        iconTheme: {
-          primary: '#713200',
-          secondary: '#FFFAEE',
-        },
-      });
+      this.status = 'invalid';
     }
   }
   openPopup() {
-    this.auth.GoogleAuth();
+    this.auth.GoogleAuth('signup');
   }
 }

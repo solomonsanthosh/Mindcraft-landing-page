@@ -27,9 +27,11 @@ export class LoginComponent implements OnInit {
         password: form.form.value.password,
       };
       this.auth.SignIn(this.user);
+    } else {
+      this.status = 'invalid';
     }
   }
   openPopup() {
-    this.auth.GoogleAuth();
+    this.auth.GoogleAuth('login');
   }
 }

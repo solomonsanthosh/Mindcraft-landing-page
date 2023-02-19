@@ -13,9 +13,9 @@ import { HotToastModule } from '@ngneat/hot-toast';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SongsComponent } from './songs/songs.component';
 import { ActivityComponent } from './activity/activity.component';
-import { SignupComponent } from './signup/signup.component';
+import { SignupComponent } from './auth/signup/signup.component';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './auth/login/login.component';
 import { AuthService } from 'src/services/auth.service';
 import { PostsComponent } from './post/posts/posts.component';
 import { CommentsComponent } from './post/comments/comments.component';
@@ -24,6 +24,10 @@ import { PostService } from 'src/services/post.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TestComponent } from './test/test.component';
 import { NavService } from 'src/services/nav.service';
+import { DoctorComponent } from './doctor/doctorRegistration/doctor.component';
+import { BooksessionComponent } from './doctor/booksession/booksession.component';
+import { PostcreateComponent } from './post/postcreate/postcreate.component';
+import { TopicComponent } from './topic/topic.component';
 
 @NgModule({
   declarations: [
@@ -38,13 +42,17 @@ import { NavService } from 'src/services/nav.service';
     NavComponent,
     NavbarComponent,
     TestComponent,
+    DoctorComponent,
+    BooksessionComponent,
+    PostcreateComponent,
+    TopicComponent,
   ],
   imports: [
     BrowserModule,
     HotToastModule.forRoot({
       reverseOrder: true,
       dismissible: true,
-      autoClose: false,
+      autoClose: true,
     }),
     FormsModule,
     AppRoutingModule,

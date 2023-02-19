@@ -1,4 +1,10 @@
 <div class="min-h-screen pt-[4rem] justify-center flex relative bg-[#f6f6f6]">
+  <a
+    routerLink="/posts"
+    class="z-30 absolute top-[9%] left-40 text-4xl text-[#4888d2] font-mono"
+  >
+    <
+  </a>
   <div class="w-[80%] min-h-full py-5 relative scroll-smooth">
     <div class="w-[80%] post mx-auto py-2 px-4">
       <h1 class="text-[1.2rem] font-medium text-[#4888d2]">
@@ -33,10 +39,10 @@
     </div>
     <div
       class="w-[80%] post mx-auto py-2 px-4"
-      *ngFor="let content of contents[0]"
+      *ngFor="let content of currentPost.comments"
     >
       <h1 class="text-[1rem] font-medium text-[#4888d2]">
-        {{ content.owner.name }}
+        @{{ content.owner.name }}
       </h1>
       <h1 class="text-[1rem] font-bold">{{ content.title }}</h1>
       <p class="font-extralight text-[#5d5d5d] py-1">

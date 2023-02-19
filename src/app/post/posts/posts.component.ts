@@ -15,6 +15,7 @@ export class PostsComponent implements OnInit {
   showStories = false;
   showCreate = true;
   story: any;
+  mode: string;
   constructor(
     private http: HttpClient,
     private route: Router,
@@ -30,23 +31,25 @@ export class PostsComponent implements OnInit {
 
   getPosts() {
     this.http
-      .get(`http://localhost:8000/getpost/${this.user.topic}`)
+      .get(`https://mindcraft-server.onrender.com/getpost/${this.user.topic}`)
       .subscribe((res: any) => {
         this.contents = res;
       });
   }
-  goComments(post: any) {
-    this.postService.addCurrentPost(post);
-    this.route.navigate(['/comments', post._id]);
-  }
+  // goComments(post: any) {
+  //   this.postService.addCurrentPost(post);
+  //   this.route.navigate(['/comments', post._id]);
+  // }
   getSuccessStories() {
     this.http
       .get(`https://mindcraft-server.onrender.com/getstory/${this.user.topic}`)
       .subscribe((res: any) => {
         this.stories = res;
+        console.log(res);
       });
   }
   getTopicChange(data: string) {
+    this.mode = data;
     if (data == 'explore') {
       this.showCreate = true;
       this.showStories = false;
@@ -62,29 +65,22 @@ export class PostsComponent implements OnInit {
       this.showStories = false;
       this.showCreate = false;
       this.http
-        .get(`http://localhost:8000/getpostuser/${this.user._id}`)
+        .get(
+          `https://mindcraft-server.onrender.com/getpostuser/${this.user._id}`
+        )
         .subscribe((res: any) => {
           this.contents = res;
         });
     }
   }
-  addPost() {
-    this.http
-      .post<any>('http://localhost:8000/createpost', {
-        Post: {
-          topic: this.user.topic,
-          owner: this.user._id,
-          title: this.title,
-          content: this.content,
-        },
-      })
-      .subscribe((res) => {
-        this.getPosts();
-      });
+  addPost(res: any) {
+    console.log(res);
+    res.owner = this.user;
+    this.contents.unshift(res);
   }
   addStory() {
     this.http
-      .post<any>('http://localhost:8000/createstory', {
+      .post<any>('https://mindcraft-server.onrender.com/createstory', {
         topic: this.user.topic,
         owner: this.user._id,
         story: this.story,

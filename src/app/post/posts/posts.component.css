@@ -17,3 +17,6 @@ textarea ,input{
 textarea:focus,input {
     outline:1px solid rgb(228, 228, 228);
 }
+.text {
+    color: rgb(17, 167, 17);
+}

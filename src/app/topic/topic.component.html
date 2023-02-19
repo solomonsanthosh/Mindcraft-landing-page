@@ -1,0 +1,53 @@
+<div class="w-full min-h-screen bg-[#f6f6f6]">
+  <div class="w-[80%] mx-auto">
+    <h1 class="text-2xl font-semibold py-[3rem]">
+      Tell Mindcraft what you are dealing with.
+    </h1>
+
+    <div class="w-[40%] flex flex-wrap justify-start">
+      <button
+        [ngClass]="selected == 'depression' ? 'select' : null"
+        (click)="onTopicSelect('depression')"
+        class="px-6 py-2 rounded-full shadow-md m-2 bg-white"
+      >
+        Depression
+      </button>
+      <button
+        [ngClass]="selected == 'stress' ? 'select' : null"
+        (click)="onTopicSelect('stress')"
+        class="px-6 py-2 rounded-full shadow-md m-2 bg-white"
+      >
+        Stress
+      </button>
+      <button
+        [ngClass]="selected == 'ptsd' ? 'select' : null"
+        (click)="onTopicSelect('ptsd')"
+        class="px-6 py-2 rounded-full shadow-md m-2 bg-white"
+      >
+        Ptsd
+      </button>
+      <button
+        [ngClass]="selected == 'studies' ? 'select' : null"
+        (click)="onTopicSelect('studies')"
+        class="px-6 py-2 rounded-full shadow-md m-2 bg-white"
+      >
+        Studies</button
+      ><button
+        [ngClass]="selected == 'work' ? 'select' : null"
+        (click)="onTopicSelect('work')"
+        class="px-6 py-2 rounded-full shadow-md m-2 bg-white"
+      >
+        Work
+      </button>
+    </div>
+  </div>
+
+  <button
+    (click)="save()"
+    [ngClass]="selected == null ? 'disabled' : 'active'"
+    [disabled]="selected == null"
+    class="px-6 py-2 absolute bottom-10 right-10 rounded-full shadow-md text-xl m-2 text-white bg-green-500"
+  >
+    Save
+  </button>
+</div>

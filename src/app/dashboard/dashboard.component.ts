@@ -13,4 +13,5 @@ export class DashboardComponent implements OnInit {
     this.nav.show();
     this.user = JSON.parse(localStorage.getItem('user')!);
   }
+  
 }

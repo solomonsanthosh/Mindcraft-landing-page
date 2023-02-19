@@ -1,0 +1,23 @@
+<input
+  class="w-full"
+  type="text"
+  placeholder="Write your title...."
+  name="title"
+  id=""
+  [(ngModel)]="title"
+/>
+<textarea
+  [(ngModel)]="content"
+  class="w-full textarea"
+  placeholder="Write your post..."
+  name="content"
+  id=""
+  cols="30"
+  rows="4"
+></textarea>
+<button
+  (click)="addPost()"
+  class="text-white my-5 ml-5 p-2 px-4 rounded-full shadow-sm bg-[#4888d2]"
+>
+  Add Post
+</button>

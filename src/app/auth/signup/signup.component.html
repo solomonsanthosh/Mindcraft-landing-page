@@ -19,7 +19,27 @@
         />
       </button>
       <p class="my-4 text-[#9d9d9d] font-medium">or do it via email</p>
-
+      <div class="flex flex-col mb-4">
+        <label for="name" class="text-[1.1rem] mb-2 font-medium">Name</label>
+        <input
+          #name="ngModel"
+          minlength="3"
+          required
+          type="text"
+          class="input"
+          ngModel
+          name="name"
+          placeholder="Enter your Name"
+          class="form-control"
+        />
+        <div
+          *ngIf="(name.touched && name.invalid) || status == 'invalid'"
+          class="mt-1 text-red-600"
+        >
+          <p *ngIf="name.errors?.['required']">Please enter your name</p>
+          <p *ngIf="name.errors?.['minlength']">minimum 6 letters</p>
+        </div>
+      </div>
       <div class="flex flex-col mb-4">
         <label for="email" class="text-[1.1rem] mb-2 font-medium">Email</label>
         <input
@@ -32,7 +52,10 @@
           placeholder="@gmail.com"
           class="form-control"
         />
-        <div *ngIf="email.touched && email.invalid" class="mt-1 text-red-600">
+        <div
+          *ngIf="(email.touched && email.invalid) || status == 'invalid'"
+          class="mt-1 text-red-600"
+        >
           <p *ngIf="email.errors?.['required']">Please enter your email</p>
         </div>
       </div>
@@ -51,22 +74,22 @@
           class="form-control"
         />
         <div
-          *ngIf="password.touched && email.invalid"
+          *ngIf="(password.touched && password.invalid) || status == 'invalid'"
           class="mt-1 text-red-600"
         >
           <p *ngIf="password.errors?.['required']">Please enter a Password</p>
-          <p *ngIf="email.errors?.['minlength']">
+          <p *ngIf="password.errors?.['minlength']">
             Password must be at least 6 characters
           </p>
         </div>
       </div>
       <h1 class="my-5">
-        Don't have an account ?<a class="text-blue-500" routerLink="/signup">
-          sign up</a
+        Already have an account ?<a class="text-blue-500" routerLink="/signin">
+          sign in</a
         >
       </h1>
       <input
-        class="bg-black text-white px-5 py-2 rounded-md font-semibold text-center mx-auto"
+        class="cursor-pointer bg-black text-white px-5 py-2 rounded-md font-semibold text-center mx-auto"
         type="submit"
         value="Submit"
       />

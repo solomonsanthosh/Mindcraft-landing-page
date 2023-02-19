@@ -10,5 +10,6 @@ export class PostService {
   }
   addCurrentPost(post: any) {
     this.post = post;
+    console.log(post);
   }
 }

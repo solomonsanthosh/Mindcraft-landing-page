@@ -1,0 +1,117 @@
+<div class="w-[50%] mx-auto">
+  <h1 class="text-2xl font-semibold my-[3rem]">
+    Lets become a Mindcraft Doctor
+  </h1>
+  <form #form="ngForm" class="w-full relative" (ngSubmit)="submitform(form)">
+    <div class="flex flex-col w-[100%] mb-4">
+      <label for="name" class="text-[1.1rem] mb-4 font-medium">Name</label>
+      <input
+        #name="ngModel"
+        minlength="3"
+        required
+        type="text"
+        class="input"
+        ngModel
+        name="name"
+        placeholder="Enter your Name"
+        class="form-control"
+      />
+    </div>
+    <div class="flex flex-col w-[100%] mb-4">
+      <label for="about" class="text-[1.1rem] mb-4 font-medium"
+        >About yourself</label
+      >
+      <textarea
+        #about="ngModel"
+        required
+        rows="5"
+        class="input"
+        ngModel
+        name="about"
+        placeholder="About your self..."
+        class="form-control resize-none"
+      ></textarea>
+    </div>
+    <div class="flex flex-col w-[100%] mb-4">
+      <label for="experience" class="text-[1.1rem] mb-4 font-medium"
+        >Experience</label
+      >
+      <input
+        #experience="ngModel"
+        minlength="3"
+        required
+        type="number"
+        class="input"
+        ngModel
+        name="experience"
+        placeholder="Experience in years"
+        class="form-control"
+      />
+    </div>
+    <div class="flex flex-col w-[100%] mb-4">
+      <label for="email" class="text-[1.1rem] mb-4 font-medium">Email</label>
+      <input
+        #email="ngModel"
+        minlength="3"
+        required
+        type="text"
+        class="input"
+        ngModel
+        name="email"
+        placeholder="Enter your Email"
+        class="form-control"
+      />
+    </div>
+    <div class="flex flex-col w-[100%] mb-4">
+      <label for="phone" class="text-[1.1rem] mb-4 font-medium">Phone</label>
+      <input
+        #phone="ngModel"
+        minlength="3"
+        required
+        type="number"
+        class="input"
+        ngModel
+        name="phone"
+        placeholder="Enter your phone"
+        class="form-control"
+      />
+    </div>
+
+    <div class="flex flex-col w-[100%] mb-4">
+      <label for="fee" class="text-[1.1rem] mb-4 font-medium">Fees</label>
+      <input
+        #fee="ngModel"
+        minlength="3"
+        required
+        type="number"
+        class="input"
+        ngModel
+        name="fee"
+        placeholder="How much fee for a session"
+        class="form-control"
+      />
+    </div>
+    <!-- <div class="flex flex-col w-[100%] mb-4">
+      <label for="fee" class="text-[1.1rem] mb-4 font-medium"
+        >Document Proof</label
+      >
+
+      <input
+        #doc="ngModel"
+        minlength="3"
+        required
+        type="file"
+        class="input"
+        ngModel
+        (change)="onFileSelected($event)"
+        name="doc"
+        class="form-control"
+      />
+    </div> -->
+    <input
+      class="bg-black mb-10 mt-5 text-white px-5 py-2 rounded-md font-semibold text-center mx-auto"
+      type="submit"
+      value="Submit"
+    />
+  </form>
+</div>

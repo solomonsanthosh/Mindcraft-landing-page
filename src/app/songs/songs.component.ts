@@ -10,18 +10,19 @@ export class SongsComponent implements OnInit {
   songs: any[] = [];
   user: any;
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('user')!);
     this.getSongs();
-    this.user = localStorage.getItem('user');
   }
 
   constructor(private http: HttpClient) {}
 
   private getSongs() {
     this.http
-      .get('https://mindcraft-server.onrender.com/getmusic/stress')
-      .subscribe((res) => {
-        this.songs.push(res);
+      .get(`https://mindcraft-server.onrender.com/getmusic/${this.user.topic}`)
+      .subscribe((res: any) => {
         console.log(res);
+
+        this.songs = res;
       });
   }
 }

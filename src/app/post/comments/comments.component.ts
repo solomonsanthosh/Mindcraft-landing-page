@@ -10,36 +10,40 @@ import { PostService } from 'src/services/post.service';
 export class CommentsComponent implements OnInit {
   contents: any[] = [];
   comment: any;
+  currentPostId: any;
   currentPost: any;
-
   id: any;
   user: any;
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
     private postService: PostService
-  ) {
-    this.route.paramMap.subscribe((params: any) => {
-      //change the value of showRoutes based on your requirements
-      this.id = params.params.id;
-    });
-  }
+  ) {}
 
   ngOnInit() {
-    this.currentPost = this.postService.getCurrentPost();
     this.user = JSON.parse(localStorage.getItem('user')!);
-    console.log(this.currentPost);
 
-    this.getComments(this.id);
+    this.currentPostId = this.route.snapshot.paramMap.get('id');
+    console.log(this.route.snapshot.paramMap.get('id'));
+
+    this.http
+      .get(
+        `https://mindcraft-server.onrender.com/getpostsingle/${this.currentPostId}`
+      )
+      .subscribe((res: any) => {
+        console.log(res, 'comment');
+
+        this.currentPost = res;
+      });
   }
   addComment() {
     if (this.comment) {
       this.http
-        .post(`http://localhost:8000/createcomment/`, {
-          postid: this.currentPost._id,
+        .post(`https://mindcraft-server.onrender.com/createcomment/`, {
+          postid: this.currentPostId,
           content: {
             topic: this.user.topic,
-            post: this.currentPost._id,
+            post: this.currentPostId,
             owner: this.user._id,
             content: this.comment,
           },
@@ -52,12 +56,5 @@ export class CommentsComponent implements OnInit {
     } else {
       console.log('enter a comment');
     }
-  }
-  getComments(id: string) {
-    this.http
-      .get(`https://mindcraft-server.onrender.com/getcomment/${id}`)
-      .subscribe((res: any) => {
-        this.contents.push(res);
-      });
   }
 }

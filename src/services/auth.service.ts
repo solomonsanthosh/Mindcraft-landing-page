@@ -3,6 +3,10 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { HotToastService } from '@ngneat/hot-toast';
+function _window(): any {
+  return window;
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -12,6 +16,7 @@ export class AuthService {
   constructor(
     public auth: AngularFireAuth,
     private router: Router,
+    private toast: HotToastService,
     private http: HttpClient
   ) {
     this.auth.authState.subscribe((user) => {
@@ -24,43 +29,78 @@ export class AuthService {
       }
     });
   }
-
+  get nativeWindow(): any {
+    return _window();
+  }
   SignUp(user: any) {
     return this.auth
       .createUserWithEmailAndPassword(user.email, user.password)
       .then((result) => {
         // this.userData = result.user;
         // console.log('res');
-
+        this.toast.success('Signup successful', {
+          style: {
+            border: '1px solid #44B159',
+            padding: '16px',
+            color: '#44B159',
+          },
+          iconTheme: {
+            primary: '#44B159',
+            secondary: '#FFFAEE',
+          },
+        });
         this.http
-          .post('http://localhost:8000/createuser', user)
-          .subscribe((data) => {
+          .post('https://mindcraft-server.onrender.com/createuser', user)
+          .subscribe((data: any) => {
             this.userData = {
-              _id: data,
+              _id: data._id,
               name: user.name,
               email: user.email,
             };
             localStorage.setItem('user', JSON.stringify(this.userData));
+            this.router.navigate(['topic']);
           });
-        this.router.navigate(['test']);
       })
       .catch((error) => {
-        console.log(error.message);
+        this.toast.error(error.code, {
+          style: {
+            border: '1px solid #713200',
+            padding: '16px',
+            color: '#713200',
+          },
+          iconTheme: {
+            primary: '#713200',
+            secondary: '#FFFAEE',
+          },
+        });
       });
   }
   SignIn(user: any) {
     return this.auth
       .signInWithEmailAndPassword(user.email, user.password)
       .then((result) => {
+        this.toast.success('Login successful', {
+          style: {
+            border: '1px solid #44B159',
+            padding: '16px',
+            color: '#44B159',
+          },
+          iconTheme: {
+            primary: '#44B159',
+            secondary: '#FFFAEE',
+          },
+        });
         this.http
-          .get(`http://localhost:8000/getsingleuser/${user.email}`)
+          .get(
+            `https://mindcraft-server.onrender.com/getsingleuser/${user.email}`
+          )
           .subscribe((res: any) => {
             if (res.topic) {
               this.router.navigate(['dashboard']);
               localStorage.setItem('user', JSON.stringify(res));
             } else {
               localStorage.setItem('user', JSON.stringify(res));
-              this.router.navigate(['test']);
+              this.router.navigate(['topic']);
             }
           });
         // console.log(result.user);
@@ -68,34 +108,149 @@ export class AuthService {
         //
       })
       .catch((error) => {
-        console.log(error.message);
+        this.toast.error(error.code, {
+          style: {
+            border: '1px solid #713200',
+            padding: '16px',
+            color: '#713200',
+          },
+          iconTheme: {
+            primary: '#713200',
+            secondary: '#FFFAEE',
+          },
+        });
       });
   }
-  GoogleAuth() {
-    return this.AuthLogin(new GoogleAuthProvider());
+  GoogleAuth(mode: String) {
+    if (mode == 'signup') {
+      return this.AuthSignup(new GoogleAuthProvider());
+    } else {
+      return this.AuthLogin(new GoogleAuthProvider());
+    }
   }
   // Auth logic to run auth providers
+  AuthSignup(provider: any) {
+    return this.auth
+      .signInWithPopup(provider)
+      .then((result: any) => {
+        this.toast.success('Signup successful', {
+          style: {
+            border: '1px solid #44B159',
+            padding: '16px',
+            color: '#44B159',
+          },
+          iconTheme: {
+            primary: '#44B159',
+            secondary: '#FFFAEE',
+          },
+        });
+        this.http
+          .post('https://mindcraft-server.onrender.com/createuser', {
+            email: result.user.email,
+            name: result.user.displayName,
+          })
+          .subscribe((data: any) => {
+            console.log(data);
+
+            this.userData = {
+              _id: data._id,
+              name: data.name,
+              email: data.email,
+            };
+            localStorage.setItem('user', JSON.stringify(this.userData));
+            this.router.navigate(['topic']);
+          });
+      })
+      .catch((error) => {
+        this.toast.error(error.code, {
+          style: {
+            border: '1px solid #713200',
+            padding: '16px',
+            color: '#713200',
+          },
+          iconTheme: {
+            primary: '#713200',
+            secondary: '#FFFAEE',
+          },
+        });
+      });
+  }
   AuthLogin(provider: any) {
     return this.auth
       .signInWithPopup(provider)
       .then((result: any) => {
-        this.userData = result.user;
-        console.log(result.user);
-        this.router.navigate(['dashboard']);
+        this.toast.success('Login successful', {
+          style: {
+            border: '1px solid #44B159',
+            padding: '16px',
+            color: '#44B159',
+          },
+          iconTheme: {
+            primary: '#44B159',
+            secondary: '#FFFAEE',
+          },
+        });
+        this.http
+          .get(
+            `https://mindcraft-server.onrender.com/getsingleuser/${result.user.email}`
+          )
+          .subscribe((res: any) => {
+            if (res == null) {
+              this.http
+                .post('https://mindcraft-server.onrender.com/createuser', {
+                  email: result.user.email,
+                  name: result.user.displayName,
+                })
+                .subscribe((data: any) => {
+                  console.log(data);
+
+                  this.userData = {
+                    _id: data._id,
+                    name: data.name,
+                    email: data.email,
+                  };
+                  localStorage.setItem('user', JSON.stringify(this.userData));
+                  this.router.navigate(['topic']);
+                });
+            } else {
+              if (res.topic) {
+                localStorage.setItem('user', JSON.stringify(res));
+
+                this.router.navigate(['topic']);
+              } else {
+                localStorage.setItem('user', JSON.stringify(res));
+
+                this.router.navigate(['topic']);
+              }
+            }
+          });
+        // console.log(result.user);
+
+        //
       })
-      .catch((error: any) => {
-        console.log(error);
+      .catch((error) => {
+        this.toast.error(error.code, {
+          style: {
+            border: '1px solid #713200',
+            padding: '16px',
+            color: '#713200',
+          },
+          iconTheme: {
+            primary: '#713200',
+            secondary: '#FFFAEE',
+          },
+        });
       });
   }
 
   get isLoggedIn(): boolean {
     const user = localStorage.getItem('user') || '{}';
-    console.log(user);
+    console.log(user, 'll');
 
-    return user !== null ? true : false;
+    return user !== '{}' ? true : false;
   }
   logout() {
-    localStorage.setItem('user', null!);
+    localStorage.setItem('user', '{}'!);
     this.userData = null;
     this.router.navigate(['/signin']);
   }

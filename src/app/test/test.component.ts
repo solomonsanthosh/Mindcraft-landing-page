@@ -15,13 +15,13 @@ export class TestComponent implements OnInit {
   anxietyCount: any;
   ptsdCount: any;
   topic: any;
-  user: any = JSON.parse(localStorage.getItem('user')!);
+  user: any;
 
   constructor(private http: HttpClient, private router: Router) {}
   ngOnInit(): void {
     this.http.get<any>('../../assets/questions.json').subscribe((res) => {
       this.questions = res.questions;
-      console.log(this.user);
+      this.user = JSON.parse(localStorage.getItem('user')!);
     });
     // .pipe(map((data: any) => console.log(data.result)));
   }
@@ -70,7 +70,7 @@ export class TestComponent implements OnInit {
         this.topic = 'ptsd';
       }
       this.http
-        .post<any>('http://localhost:8000/topic', {
+        .post<any>('https://mindcraft-server.onrender.com/topic', {
           user: {
             topic: this.topic,
             email: this.user.email,

@@ -2,29 +2,7 @@
   <app-nav (TopicChanged)="getTopicChange($event)" class="w-[20%]"></app-nav>
   <div class="w-[80%] min-h-full py-5 relative overflow-y-scroll scroll-smooth">
     <div *ngIf="showCreate" class="w-[80%] post mx-auto">
-      <input
-        class="w-full"
-        type="text"
-        placeholder="Write your title...."
-        name="title"
-        id=""
-        [(ngModel)]="title"
-      />
-      <textarea
-        [(ngModel)]="content"
-        class="w-full textarea"
-        placeholder="Write your post..."
-        name="content"
-        id=""
-        cols="30"
-        rows="4"
-      ></textarea>
-      <button
-        (click)="addPost()"
-        class="text-white my-5 ml-5 p-2 px-4 rounded-full shadow-sm bg-[#4888d2]"
-      >
-        Add Post
-      </button>
+      <app-postcreate (newpost)="addPost($event)"></app-postcreate>
     </div>
     <ng-container *ngIf="!showStories">
       <div
@@ -32,7 +10,10 @@
         *ngFor="let content of contents"
       >
         <div class="my-2">
-          <h1 class="text-[1rem] font-medium text-[#4888d2]">
+          <h1
+            [ngClass]="mode == 'myposts' ? 'text' : null"
+            class="text-[1rem] font-medium text-[#4888d2]"
+          >
             @{{ content.owner.name }}
           </h1>
           <h1 class="text-[1rem] font-bold">{{ content.title }}</h1>
@@ -41,15 +22,21 @@
           </p>
         </div>
         <div class="mt-3">
-          <button (click)="goComments(content)" class="flex">
+          <a routerLink="/comments/{{ content._id }}" class="flex">
             <img
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAy0lEQVR4nO1VwQrCMAzNSbzp2fM2sZc2SdMd+/9/JRlmDEVlsx0IffCgBJpHXksewJ5wzh0QsSMiZuZUgkTEIYQ+53ycRPTAzFRKgF9JOgiM49hrQUSGqVDQJREZtLe6BWZXSRGD9jQbwUaESmDr34TWgpt1W8HNup+to71WUAih2lKNMV7npfopJhDxZhf1vDUmsmXSl+A7Pbg6+BCxm0XeAREvekHzyjJLa6WsffZYlqzxYSbYJDYZ1IL3/rx8K6iJlJJTVhWBf8QdwiaRxgMoYzoAAAAASUVORK5CYII="
             />
             <p class="ml-2">{{ content.comments.length }}</p>
-          </button>
+          </a>
         </div>
-      </div></ng-container
-    >
+      </div>
+      <h1
+        class="text-center text-xl font-light text-gray-500 mt-5"
+        *ngIf="contents.length == 0"
+      >
+        No posts
+      </h1>
+    </ng-container>
     <ng-container *ngIf="showStories">
       <div class="w-[80%] post mx-auto">
         <textarea
