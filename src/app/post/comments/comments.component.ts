@@ -49,9 +49,9 @@ export class CommentsComponent implements OnInit {
           },
         })
         .subscribe((res: any) => {
-          res.owner = { name: this.user.name };
-          this.contents[0] = [res, ...this.contents[0]];
-          console.log(this.contents);
+          res.owner = this.user;
+
+          this.currentPost.comments = [res, ...this.currentPost.comments];
         });
     } else {
       console.log('enter a comment');

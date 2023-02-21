@@ -4,6 +4,7 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { HotToastService } from '@ngneat/hot-toast';
+import { catchError } from 'rxjs';
 function _window(): any {
   return window;
 }
@@ -52,6 +53,8 @@ export class AuthService {
         this.http
           .post('https://mindcraft-server.onrender.com/createuser', user)
           .subscribe((data: any) => {
+            console.log(data);
+
             this.userData = {
               _id: data._id,
               name: user.name,
@@ -133,32 +136,44 @@ export class AuthService {
     return this.auth
       .signInWithPopup(provider)
       .then((result: any) => {
-        this.toast.success('Signup successful', {
-          style: {
-            border: '1px solid #44B159',
-            padding: '16px',
-            color: '#44B159',
-          },
-          iconTheme: {
-            primary: '#44B159',
-            secondary: '#FFFAEE',
-          },
-        });
         this.http
           .post('https://mindcraft-server.onrender.com/createuser', {
             email: result.user.email,
             name: result.user.displayName,
           })
           .subscribe((data: any) => {
-            console.log(data);
-
-            this.userData = {
-              _id: data._id,
-              name: data.name,
-              email: data.email,
-            };
-            localStorage.setItem('user', JSON.stringify(this.userData));
-            this.router.navigate(['topic']);
+            if (data.error === 'already_exists') {
+              this.toast.error('User already exists', {
+                style: {
+                  border: '1px solid #713200',
+                  padding: '16px',
+                  color: '#713200',
+                },
+                iconTheme: {
+                  primary: '#713200',
+                  secondary: '#FFFAEE',
+                },
+              });
+            } else {
+              this.toast.success('Signup successful', {
+                style: {
+                  border: '1px solid #44B159',
+                  padding: '16px',
+                  color: '#44B159',
+                },
+                iconTheme: {
+                  primary: '#44B159',
+                  secondary: '#FFFAEE',
+                },
+              });
+              this.userData = {
+                _id: data._id,
+                name: data.name,
+                email: data.email,
+              };
+              localStorage.setItem('user', JSON.stringify(this.userData));
+              this.router.navigate(['topic']);
+            }
           });
       })
       .catch((error) => {

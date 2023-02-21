@@ -10,7 +10,8 @@
     </h1>
   </div>
   <div class="w-[50%] flex flex-col justify-center items-center">
-    <form #form="ngForm" class="w-4/6 relative" (ngSubmit)="submitform(form)">
+    <div class="w-4/6 relative"> 
+
       <h1 class="text-left text-2xl mb-8 font-bold">Sign In with Mindcraft</h1>
       <button class="bg-[#f6f6f6] rounded-md w-fit p-2" (click)="openPopup()">
         <img
@@ -19,6 +20,8 @@
         />
       </button>
       <p class="my-4 text-[#9d9d9d] font-medium">or do it via email</p>
+    </div>
+    <form #form="ngForm" class="w-4/6 relative" (ngSubmit)="submitform(form)">
 
       <div class="flex flex-col mb-4">
         <label for="email" class="text-[1.1rem] mb-2 font-medium">Email</label>
