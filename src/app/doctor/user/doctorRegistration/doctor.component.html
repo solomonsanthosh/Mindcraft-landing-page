@@ -49,20 +49,6 @@
       />
     </div>
     <div class="flex flex-col w-[100%] mb-4">
-      <label for="email" class="text-[1.1rem] mb-4 font-medium">Email</label>
-      <input
-        #email="ngModel"
-        minlength="3"
-        required
-        type="text"
-        class="input"
-        ngModel
-        name="email"
-        placeholder="Enter your Email"
-        class="form-control"
-      />
-    </div>
-    <div class="flex flex-col w-[100%] mb-4">
       <label for="phone" class="text-[1.1rem] mb-4 font-medium">Phone</label>
       <input
         #phone="ngModel"
@@ -88,6 +74,34 @@
         ngModel
         name="fee"
         placeholder="How much fee for a session"
+        class="form-control"
+      />
+    </div>
+    <div class="flex flex-col w-[100%] mb-4">
+      <label for="email" class="text-[1.1rem] mb-4 font-medium">Email</label>
+      <input
+        #email="ngModel"
+        minlength="3"
+        required
+        type="text"
+        class="input"
+        ngModel
+        name="email"
+        placeholder="Enter your Email"
+        class="form-control"
+      />
+    </div>
+    <div class="flex flex-col w-[100%] mb-4">
+      <label for="email" class="text-[1.1rem] mb-4 font-medium">Password</label>
+      <input
+        #password="ngModel"
+        minlength="6"
+        required
+        type="password"
+        class="input"
+        ngModel
+        name="password"
+        placeholder="Enter your Password"
         class="form-control"
       />
     </div>

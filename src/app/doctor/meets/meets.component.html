@@ -1,0 +1,37 @@
+<div
+  class="h-screen w-full flex relative flex-col pt-[2rem] items-center bg-[#f6f6f6]"
+>
+  <div class="my-4">
+    <a
+      routerLink="/doctordashboard"
+      class="px-4 py-2 m-2 text-white bg-blue-500 rounded-full"
+      >Requests</a
+    ><a
+      routerLink="/meets"
+      class="px-4 py-2 m-2 text-white bg-blue-500 rounded-full"
+      >Meets</a
+    >
+  </div>
+  <div class="w-[80%] mx-auto justify-center">
+    <ng-container *ngIf="requests.length > 0; else nomeet">
+      <div
+        *ngFor="let request of requests"
+        class="flex justify-between shadow-sm bg-white mt-3 p-4"
+      >
+        <h1 class="py-2 font-medium text-gray-700">
+          Meeting has been scheduled
+          <span class="text-blue-600">{{ request.meet_time }}</span> with
+          <span>{{ request.user.name }}</span>
+        </h1>
+        <a
+          routerLink="/doctormeet/{{ request.link }}"
+          class="py-2 px-4 rounded-full bg-green-500"
+          >Join meet</a
+        >
+      </div>
+    </ng-container>
+    <ng-template #nomeet class="mx-auto">
+      <h1 class="text-center my-4">Currently no meet has been scheduled</h1>
+    </ng-template>
+  </div>
+</div>

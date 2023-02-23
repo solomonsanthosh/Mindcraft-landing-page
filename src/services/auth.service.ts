@@ -82,28 +82,35 @@ export class AuthService {
     return this.auth
       .signInWithEmailAndPassword(user.email, user.password)
       .then((result) => {
-        this.toast.success('Login successful', {
-          style: {
-            border: '1px solid #44B159',
-            padding: '16px',
-            color: '#44B159',
-          },
-          iconTheme: {
-            primary: '#44B159',
-            secondary: '#FFFAEE',
-          },
-        });
         this.http
           .get(
             `https://mindcraft-server.onrender.com/getsingleuser/${user.email}`
           )
           .subscribe((res: any) => {
-            if (res.topic) {
+            this.toast.success('Login successful', {
+              style: {
+                border: '1px solid #44B159',
+                padding: '16px',
+                color: '#44B159',
+              },
+              iconTheme: {
+                primary: '#44B159',
+                secondary: '#FFFAEE',
+              },
+            });
+            console.log(res);
+
+            if (res?.topic) {
               this.router.navigate(['dashboard']);
               localStorage.setItem('user', JSON.stringify(res));
             } else {
-              localStorage.setItem('user', JSON.stringify(res));
-              this.router.navigate(['topic']);
+              if (res?.role == 'doctor') {
+                localStorage.setItem('user', JSON.stringify(res));
+                this.router.navigate(['doctordashboard']);
+              } else {
+                localStorage.setItem('user', JSON.stringify(res));
+                this.router.navigate(['topic']);
+              }
             }
           });
         // console.log(result.user);

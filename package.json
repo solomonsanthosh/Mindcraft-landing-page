@@ -10,6 +10,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-material-components/datetime-picker": "^9.0.0",
     "@angular/animations": "^15.1.0",
     "@angular/common": "^15.1.0",
     "@angular/compiler": "^15.1.0",
@@ -23,6 +24,7 @@
     "@ng-bootstrap/ng-bootstrap": "^14.0.1",
     "@ngneat/hot-toast": "^5.0.1",
     "@ngneat/overview": "^3.0.0",
+    "@syncfusion/ej2-angular-calendars": "^20.4.51",
     "angular-toastify": "^1.0.4",
     "firebase": "^9.17.1",
     "igniteui-angular": "^15.0.9",

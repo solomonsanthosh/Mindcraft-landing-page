@@ -7,9 +7,13 @@ import { CommentsComponent } from './post/comments/comments.component';
 import { PostsComponent } from './post/posts/posts.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { TestComponent } from './test/test.component';
-import { DoctorComponent } from './doctor/doctorRegistration/doctor.component';
-import { BooksessionComponent } from './doctor/booksession/booksession.component';
+import { DoctorComponent } from './doctor/user/doctorRegistration/doctor.component';
+import { BooksessionComponent } from './doctor/user/booksession/booksession.component';
 import { TopicComponent } from './topic/topic.component';
+import { MeetComponent } from './doctor/user/meet/meet.component';
+import { DoctordashboardComponent } from './doctor/doctordashboard/doctordashboard.component';
+import { ProfileComponent } from './profile/profile.component';
+import { MeetsComponent } from './doctor/meets/meets.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/signin', pathMatch: 'full' },
@@ -17,6 +21,26 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'meet/:link',
+    component: MeetComponent,
+  },
+  {
+    path: 'doctormeet/:link',
+    component: MeetComponent,
+  },
+  {
+    path: 'meets',
+    component: MeetsComponent,
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+  },
+  {
+    path: 'doctordashboard',
+    component: DoctordashboardComponent,
   },
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: LoginComponent },

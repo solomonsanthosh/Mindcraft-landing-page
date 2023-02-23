@@ -1,0 +1,31 @@
+<div class="h-screen w-full flex relative pt-[5rem] bg-[#f6f6f6]">
+  <div class="w-[80%] mx-auto justify-center">
+    <div
+      *ngFor="let request of requests"
+      class="shadow-sm flex bg-white mt-3 p-4"
+    >
+      <div
+        class="flex w-full justify-between items-center"
+        *ngIf="request.accepted"
+      >
+        <h1 class="py-2 font-medium text-gray-700">
+          Meeting has been scheduled
+          <span class="text-blue-600">{{ request.meet_time }}</span> with doctor
+          <span>{{ request.doctor.name }}</span>
+        </h1>
+        <button
+          (click)="checkPay(request)"
+          class="py-2 px-4 rounded-full bg-green-500"
+        >
+          Join meet
+        </button>
+      </div>
+      <div *ngIf="!request.accepted">
+        <h1 class="py-2 font-medium text-gray-700">
+          Meet request has been sent to doctor
+          <span>{{ request.doctor.name }}</span>
+        </h1>
+      </div>
+    </div>
+  </div>
+</div>

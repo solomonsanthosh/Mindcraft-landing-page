@@ -1,0 +1,63 @@
+<div
+  class="h-screen w-full flex items-center flex-col pt-[2rem] relative bg-[rgb(246,246,246)]"
+>
+  <div class="my-4">
+    <a
+      routerLink="/doctordashboard"
+      class="px-4 py-2 m-2 text-white bg-blue-500 rounded-full"
+      >Requests</a
+    ><a
+      routerLink="/meets"
+      class="px-4 py-2 m-2 text-white bg-blue-500 rounded-full"
+      >Meets</a
+    >
+  </div>
+  <div class="w-[80%] h-fit mx-auto grid grid-cols-2 gap-5 justify-center">
+    <div *ngFor="let request of requests" class="bg-white mt-3 p-4">
+      <h1 class="py-2 font-bold text-gray-700">
+        Name: <span class="font-normal">{{ request.user.name }}</span>
+      </h1>
+
+      <h1 class="py-2 font-bold text-gray-700">
+        Problem:
+        <span class="font-normal">{{ request.user.topic }}</span>
+      </h1>
+      <div class="flex justify-between">
+        <input [(ngModel)]="date" type="date" class="my-2" />
+
+        <select [(ngModel)]="time" class="w-[30%] my-2" name="time" id="">
+          <option value="1:00 AM">1:00 AM</option>
+          <option value="2:00 AM">2:00 AM</option>
+          <option value="3:00 AM">3:00 AM</option>
+          <option value="4:00 AM">4:00 AM</option>
+          <option value="5:00 AM">5:00 AM</option>
+          <option value="6:00 AM">6:00 AM</option>
+          <option value="7:00 AM">7:00 AM</option>
+          <option value="8:00 AM">8:00 AM</option>
+          <option value="9:00 AM">9:00 AM</option>
+          <option value="10:00 AM">10:00 AM</option>
+          <option value="11:00 AM">11:00 AM</option>
+          <option value="12:00 PM">12:00 AM</option>
+          <option value="1:00 PM">1:00 PM</option>
+          <option value="2:00 PM">2:00 PM</option>
+          <option value="2:00 PM">2:00 PM</option>
+          <option value="4:00 PM">4:00 PM</option>
+          <option value="5:00 PM">5:00 PM</option>
+          <option value="6:00 PM">6:00 PM</option>
+          <option value="7:00 PM">7:00 PM</option>
+          <option value="8:00 PM">8:00 PM</option>
+          <option value="9:00 PM">9:00 PM</option>
+          <option value="10:00 PM">10:00 PM</option>
+          <option value="11:00 PM">11:00 PM</option>
+          <option value="12:00 AM">12:00 AM</option>
+        </select>
+        <button
+          class="bg-black px-4 py-1 text-white rounded-full"
+          (click)="meet(request)"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

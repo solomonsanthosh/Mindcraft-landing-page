@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { HotToastModule } from '@ngneat/hot-toast';
+
 // page components
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SongsComponent } from './songs/songs.component';
@@ -24,10 +25,15 @@ import { PostService } from 'src/services/post.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TestComponent } from './test/test.component';
 import { NavService } from 'src/services/nav.service';
-import { DoctorComponent } from './doctor/doctorRegistration/doctor.component';
-import { BooksessionComponent } from './doctor/booksession/booksession.component';
+import { DoctorComponent } from './doctor/user/doctorRegistration/doctor.component';
+import { BooksessionComponent } from './doctor/user/booksession/booksession.component';
 import { PostcreateComponent } from './post/postcreate/postcreate.component';
 import { TopicComponent } from './topic/topic.component';
+import { MeetComponent } from './doctor/user/meet/meet.component';
+import { DoctordashboardComponent } from './doctor/doctordashboard/doctordashboard.component';
+import { ProfileComponent } from './profile/profile.component';
+import { MeetsComponent } from './doctor/meets/meets.component';
+import { DoctormeetComponent } from './doctor/doctormeet/doctormeet.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +52,11 @@ import { TopicComponent } from './topic/topic.component';
     BooksessionComponent,
     PostcreateComponent,
     TopicComponent,
+    MeetComponent,
+    DoctordashboardComponent,
+    ProfileComponent,
+    MeetsComponent,
+    DoctormeetComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,31 @@
 <div class="bg-[#f6f6f6] pt-[4rem] w-full min-h-screen">
+  <div
+    *ngIf="popup"
+    class="z-50 w-full h-full fixed bottom-0 bg-[#00000058] flex justify-center items-center"
+  >
+    <div
+      class="w-[45%] p-5 h-[200px] rounded-md bg-[#f6f6f6] flex flex-col justify-center items-center"
+    >
+      <h1 class="mb-5">
+        Request to schedule a meet with doctor {{ currentDoctor.name }}?
+      </h1>
+      <div class="w-full flex justify-center items-center">
+        <button
+          (click)="session()"
+          class="w-[30%] text-white bg-green-600 mr-3 rounded-lg py-2 px-3 my-3"
+        >
+          Yes
+        </button>
+        <button
+          (click)="popup = false"
+          class="w-[30%] text-white bg-green-600 rounded-lg py-2 px-3 my-3"
+        >
+          No
+        </button>
+      </div>
+    </div>
+  </div>
+
   <div class="w-[80%] mx-auto" *ngFor="let doctor of doctors">
     <div class="w-full mt-10 bg-white p-5 shadow-sm rounded-md">
       <h1 class="py-2 font-bold text-gray-700">
@@ -22,10 +49,10 @@
         </h1>
 
         <button
-          (click)="pay(doctor.fee)"
+          (click)="popup = true; currentDoctor = doctor"
           class="py-2 text-white px-4 rounded-full bg-green-600"
         >
-          Book a session
+          Request a session
         </button>
       </div>
     </div>
