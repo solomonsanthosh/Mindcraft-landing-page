@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/services/auth.service';
-
+import { HotToastService } from '@ngneat/hot-toast';
 @Component({
   selector: 'app-booksession',
   templateUrl: './booksession.component.html',
@@ -15,7 +15,11 @@ export class BooksessionComponent implements OnInit {
   popup: boolean = false;
   options: {};
 
-  constructor(private http: HttpClient, private auth: AuthService) {}
+  constructor(
+    private http: HttpClient,
+    private auth: AuthService,
+    private toast: HotToastService
+  ) {}
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('user')!);
     this.getDoctors();
@@ -69,7 +73,21 @@ export class BooksessionComponent implements OnInit {
         doctor: this.currentDoctor._id,
       })
       .subscribe((res) => {
-        console.log(res);
+        this.popup = false;
+        this.toast.success(
+          'Request sent successfully.Please check profile for request status',
+          {
+            style: {
+              border: '1px solid #44B159',
+              padding: '16px',
+              color: '#44B159',
+            },
+            iconTheme: {
+              primary: '#44B159',
+              secondary: '#FFFAEE',
+            },
+          }
+        );
       });
   }
 }

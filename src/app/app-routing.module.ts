@@ -12,8 +12,11 @@ import { BooksessionComponent } from './doctor/user/booksession/booksession.comp
 import { TopicComponent } from './topic/topic.component';
 import { MeetComponent } from './doctor/user/meet/meet.component';
 import { DoctordashboardComponent } from './doctor/doctordashboard/doctordashboard.component';
-import { ProfileComponent } from './profile/profile.component';
+import { MeetRequestsComponent } from './profile/meetrequests/meetrequests.component';
+
 import { MeetsComponent } from './doctor/meets/meets.component';
+import { SinglestoryComponent } from './post/singlestory/singlestory.component';
+import { ProfileComponent } from './profile/profile/profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/signin', pathMatch: 'full' },
@@ -55,6 +58,11 @@ const routes: Routes = [
   {
     path: 'session',
     component: BooksessionComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'singlestory/:story',
+    component: SinglestoryComponent,
     canActivate: [AuthGuard],
   },
   { path: 'doctor', component: DoctorComponent },

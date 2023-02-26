@@ -16,9 +16,12 @@ export class MeetsComponent {
     this.user = JSON.parse(localStorage.getItem('user')!);
     this.http
       .get(`https://mindcraft-server.onrender.com/getmeets/${this.user._id}`)
-      .subscribe((res) => {
+      .subscribe((res: any) => {
         console.log(res);
-
+        res.map((element: any) => {
+          var d = new Date(element.meet_time);
+          element.meet_time = d.toString();
+        });
         this.requests = res;
       });
   }

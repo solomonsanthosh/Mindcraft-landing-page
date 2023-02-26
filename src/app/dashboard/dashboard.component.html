@@ -27,4 +27,31 @@
   <app-songs></app-songs>
 
   <app-activity></app-activity>
+  <div class="w-[80%] py-10 mx-auto">
+    <carousel
+      class="border rounded-md"
+      [objectFit]="'cover'"
+      [cellWidth]="'100%'"
+      [height]="300"
+      [autoplay]="true"
+      [dots]="true"
+      [loop]="true"
+    >
+      <div
+        *ngFor="let story of stories"
+        class="carousel-cell flex justify-center items-center"
+      >
+        <div class="w-[80%]">
+          <p class="text-[1.2rem] text-blue-600">@{{ story.owner.name }}</p>
+          <p class="inline">{{ story.story.slice(0, 800) }}</p>
+          <a
+            routerLink="/singlestory/{{ story._id }}"
+            class="inline text-blue-600"
+            *ngIf="story.story.length > 800"
+            >read more...</a
+          >
+        </div>
+      </div>
+    </carousel>
+  </div>
 </div>

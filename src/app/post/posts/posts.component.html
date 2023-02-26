@@ -21,13 +21,22 @@
             {{ content.content }}
           </p>
         </div>
-        <div class="mt-3">
+        <div class="mt-3 flex items-center">
           <a routerLink="/comments/{{ content._id }}" class="flex">
             <img
               src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAy0lEQVR4nO1VwQrCMAzNSbzp2fM2sZc2SdMd+/9/JRlmDEVlsx0IffCgBJpHXksewJ5wzh0QsSMiZuZUgkTEIYQ+53ycRPTAzFRKgF9JOgiM49hrQUSGqVDQJREZtLe6BWZXSRGD9jQbwUaESmDr34TWgpt1W8HNup+to71WUAih2lKNMV7npfopJhDxZhf1vDUmsmXSl+A7Pbg6+BCxm0XeAREvekHzyjJLa6WsffZYlqzxYSbYJDYZ1IL3/rx8K6iJlJJTVhWBf8QdwiaRxgMoYzoAAAAASUVORK5CYII="
             />
             <p class="ml-2">{{ content.comments.length }}</p>
           </a>
+          <button
+            (click)="deletePost(content)"
+            *ngIf="mode == 'myposts'"
+            class="ml-4 mb-1"
+          >
+            <img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAkElEQVR4nO2UQQqDMBBFn4tC7SYtPYFHkOKyQgXvf6Uy8IU4jI1mWx98Qj4/wxCSgd80QALuUpJXzQsYgF4a5O2icd2YZrePvLTV9QV4A2PWUUmjztjZkE7aS1fK+8BT6w1onVdVcAr8xTsLxpx3yB8+m4fWq5R7VQUpUMzbx/8cGF+WzYdFiE0WP1S3ZNkVX/C2GEyrlcOZAAAAAElFTkSuQmCC"
+            />
+          </button>
         </div>
       </div>
       <h1

@@ -40,6 +40,13 @@ export class PostsComponent implements OnInit {
   //   this.postService.addCurrentPost(post);
   //   this.route.navigate(['/comments', post._id]);
   // }
+  deletePost(post: any) {
+    this.http
+      .delete(`https://mindcraft-server.onrender.com/deletepost/${post._id}`)
+      .subscribe((res: any) => {
+        this.contents = this.contents.filter((con) => con._id !== post._id);
+      });
+  }
   getSuccessStories() {
     this.http
       .get(`https://mindcraft-server.onrender.com/getstory/${this.user.topic}`)

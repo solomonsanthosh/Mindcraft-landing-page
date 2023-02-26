@@ -23,11 +23,14 @@
           <span class="text-blue-600">{{ request.meet_time }}</span> with
           <span>{{ request.user.name }}</span>
         </h1>
-        <a
-          routerLink="/doctormeet/{{ request.link }}"
-          class="py-2 px-4 rounded-full bg-green-500"
-          >Join meet</a
-        >
+        <div>
+          <a
+            routerLink="/doctormeet/{{ request.link }}"
+            class="py-2 px-4 rounded-full bg-green-500"
+            >Join meet</a
+          >
+          <!-- <button class="py-2 px-4 ml-4 rounded-full bg-gray-200">x</button> -->
+        </div>
       </div>
     </ng-container>
     <ng-template #nomeet class="mx-auto">

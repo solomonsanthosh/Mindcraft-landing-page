@@ -1,16 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { HotToastService } from '@ngneat/hot-toast';
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css'],
+  selector: 'app-meetrequest',
+  templateUrl: './meetrequests.component.html',
+  styleUrls: ['./meetrequests.component.css'],
 })
-export class ProfileComponent implements OnInit {
+export class MeetRequestsComponent implements OnInit {
   user: any;
   requests: any;
   paymentHandler: any = null;
-  constructor(private http: HttpClient, private route: Router) {}
+
+  constructor(
+    private http: HttpClient,
+    private route: Router,
+    private toast: HotToastService
+  ) {}
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem('user')!);
     this.invokeStripe();
@@ -18,9 +24,12 @@ export class ProfileComponent implements OnInit {
       .get(
         `https://mindcraft-server.onrender.com/getuserrequest/${this.user._id}`
       )
-      .subscribe((res) => {
+      .subscribe((res: any) => {
         console.log(res);
-
+        res.map((element: any) => {
+          var d = new Date(element.meet_time);
+          element.meet_time = d.toString();
+        });
         this.requests = res;
       });
   }
@@ -30,6 +39,17 @@ export class ProfileComponent implements OnInit {
       locale: 'auto',
       token: function (stripeToken: any) {
         console.log(stripeToken);
+        this.toast.success('Payment Successful', {
+          style: {
+            border: '1px solid #44B159',
+            padding: '16px',
+            color: '#44B159',
+          },
+          iconTheme: {
+            primary: '#44B159',
+            secondary: '#FFFAEE',
+          },
+        });
 
         // alert('Stripe token generated!');
       },

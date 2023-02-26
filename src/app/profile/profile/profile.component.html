@@ -1,0 +1,42 @@
+<div class="w-[100%] min-h-screen pt-[6rem] bg-[#f6f6f6] relative">
+  <div class="w-[80%] mx-auto flex flex-col">
+    <h1 class="text-center text-xl font-bold">{{ user.name }}</h1>
+    <h1 class="text-center text-gray-500 py-2">{{ user.email }}</h1>
+    <div class="my-4 flex justify-center">
+      <button
+        (click)="changeMode('user')"
+        class="px-4 py-2 m-2 text-black bg-blue-300 rounded-full"
+      >
+        User Profile</button
+      ><button
+        (click)="changeMode('meets')"
+        class="px-4 py-2 m-2 text-black bg-blue-300 rounded-full"
+      >
+        Meets
+      </button>
+    </div>
+    <div *ngIf="mode == 'user'" class="flex justify-between">
+      <div
+        class="w-[48%] shadow-sm pl-5 bg-white h-[100px] flex flex-col justify-center items-start"
+      >
+        <button (click)="showNameInput = true" class="text-blue-500 mb-2">
+          Change name
+        </button>
+        <div *ngIf="showNameInput">
+          <input type="text" [(ngModel)]="name" class="border" /><button
+            (click)="onSave()"
+            class="ml-3"
+          >
+            save
+          </button>
+        </div>
+      </div>
+      <div
+        class="w-[48%] shadow-sm pl-5 bg-white h-[100px] flex flex-col justify-center items-start"
+      >
+        <a routerLink="/topic" class="text-blue-500 mb-2"> Change Topic </a>
+      </div>
+    </div>
+    <app-meetrequest *ngIf="mode == 'meets'"></app-meetrequest>
+  </div>
+</div>

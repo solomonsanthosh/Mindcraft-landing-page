@@ -1,5 +1,5 @@
-<div class="h-screen w-full flex relative pt-[5rem] bg-[#f6f6f6]">
-  <div class="w-[80%] mx-auto justify-center">
+<div class="min-h-screen w-full flex relative">
+  <div class="w-full mx-auto justify-center">
     <div
       *ngFor="let request of requests"
       class="shadow-sm flex bg-white mt-3 p-4"
@@ -17,7 +17,7 @@
           (click)="checkPay(request)"
           class="py-2 px-4 rounded-full bg-green-500"
         >
-          Join meet
+          {{ request.paid ? "Join meet" : "Pay" }}
         </button>
       </div>
       <div *ngIf="!request.accepted">

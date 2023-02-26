@@ -31,15 +31,18 @@ import { PostcreateComponent } from './post/postcreate/postcreate.component';
 import { TopicComponent } from './topic/topic.component';
 import { MeetComponent } from './doctor/user/meet/meet.component';
 import { DoctordashboardComponent } from './doctor/doctordashboard/doctordashboard.component';
-import { ProfileComponent } from './profile/profile.component';
+import { MeetRequestsComponent } from './profile/meetrequests/meetrequests.component';
 import { MeetsComponent } from './doctor/meets/meets.component';
+import { ProfileComponent } from './profile/profile/profile.component';
 import { DoctormeetComponent } from './doctor/doctormeet/doctormeet.component';
-
+import { IvyCarouselModule } from 'angular-responsive-carousel';
+import { SinglestoryComponent } from './post/singlestory/singlestory.component';
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     SongsComponent,
+    MeetRequestsComponent,
     ActivityComponent,
     SignupComponent,
     LoginComponent,
@@ -57,6 +60,7 @@ import { DoctormeetComponent } from './doctor/doctormeet/doctormeet.component';
     ProfileComponent,
     MeetsComponent,
     DoctormeetComponent,
+    SinglestoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,6 +74,7 @@ import { DoctormeetComponent } from './doctor/doctormeet/doctormeet.component';
     HttpClientModule,
     MatProgressBarModule,
     BrowserAnimationsModule,
+    IvyCarouselModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   providers: [AuthService, PostService, NavService],

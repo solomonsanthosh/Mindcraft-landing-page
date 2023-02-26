@@ -1,0 +1,15 @@
+input[type="text"],input[type="email"] ,input[type="password"] {
+    background-color: white;
+    border-radius: 5px;
+    padding: .5rem 1rem;
+}
+
+::placeholder { 
+    
+    opacity: .5; 
+}
+
+
+.border{
+    border: 2px solid rgb(195, 195, 195);
+}

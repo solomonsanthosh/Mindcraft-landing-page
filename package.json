@@ -25,6 +25,7 @@
     "@ngneat/hot-toast": "^5.0.1",
     "@ngneat/overview": "^3.0.0",
     "@syncfusion/ej2-angular-calendars": "^20.4.51",
+    "angular-responsive-carousel": "^2.1.2",
     "angular-toastify": "^1.0.4",
     "firebase": "^9.17.1",
     "igniteui-angular": "^15.0.9",
