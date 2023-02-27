@@ -1,0 +1,14 @@
+.bg {
+    background: url(../../assets/bg.jpg) center/cover;
+    
+}
+.bg::after{
+    content: '';
+    background-color: rgba(0, 0, 0, 0.148);
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    
+}

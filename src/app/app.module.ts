@@ -37,6 +37,7 @@ import { ProfileComponent } from './profile/profile/profile.component';
 import { DoctormeetComponent } from './doctor/doctormeet/doctormeet.component';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { SinglestoryComponent } from './post/singlestory/singlestory.component';
+import { HomeComponent } from './home/home.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,6 +62,7 @@ import { SinglestoryComponent } from './post/singlestory/singlestory.component';
     MeetsComponent,
     DoctormeetComponent,
     SinglestoryComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

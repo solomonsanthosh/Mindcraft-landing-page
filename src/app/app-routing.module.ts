@@ -17,9 +17,10 @@ import { MeetRequestsComponent } from './profile/meetrequests/meetrequests.compo
 import { MeetsComponent } from './doctor/meets/meets.component';
 import { SinglestoryComponent } from './post/singlestory/singlestory.component';
 import { ProfileComponent } from './profile/profile/profile.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/signin', pathMatch: 'full' },
+  { path: '', component: HomeComponent },
   {
     path: 'dashboard',
     component: DashboardComponent,
