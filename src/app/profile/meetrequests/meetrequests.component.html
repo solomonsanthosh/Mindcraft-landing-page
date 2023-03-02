@@ -1,3 +1,23 @@
+<div
+  class="z-50 w-full h-full hidden fixed bottom-0 bg-[#00000058] left-0 justify-center items-center"
+  #cardElement
+>
+  <div class="p-5 w-[60%] flex flex-col items-center bg-[#f6f6f6]">
+    <label class="w-full">
+      Card details
+      <!-- placeholder for Elements -->
+      <div id="card-element" class="field"></div>
+    </label>
+    <button
+      type="submit"
+      class="py-2 mx-auto px-4 rounded-full bg-green-500"
+      (click)="sendPayment()"
+    >
+      Pay ₹{{ currentRequest.doctor.fee }}
+    </button>
+  </div>
+</div>
+
 <div class="min-h-screen w-full flex relative">
   <div class="w-full mx-auto justify-center">
     <div
@@ -14,10 +34,20 @@
           <span>{{ request.doctor.name }}</span>
         </h1>
         <button
+          *ngIf="request.paid"
+          [disabled]="currentDate < request.time"
+          [ngClass]="currentDate < request.time ? 'disabled' : 'enabled'"
           (click)="checkPay(request)"
           class="py-2 px-4 rounded-full bg-green-500"
         >
-          {{ request.paid ? "Join meet" : "Pay" }}
+          Join meet
+        </button>
+        <button
+          *ngIf="!request.paid"
+          (click)="checkPay(request)"
+          class="py-2 px-4 rounded-full bg-green-500"
+        >
+          Pay
         </button>
       </div>
       <div *ngIf="!request.accepted">

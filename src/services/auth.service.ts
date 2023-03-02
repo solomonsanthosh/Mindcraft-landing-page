@@ -266,13 +266,13 @@ export class AuthService {
   }
 
   get isLoggedIn(): boolean {
-    const user = localStorage.getItem('user') || '{}';
-    console.log(user, 'll');
+    const user = JSON.parse(localStorage.getItem('user')!);
+    console.log(user, 'lll');
 
-    return user !== '{}' ? true : false;
+    return user !== null ? true : false;
   }
   logout() {
-    localStorage.setItem('user', '{}'!);
+    localStorage.setItem('user', null!);
     this.userData = null;
     this.router.navigate(['/signin']);
   }

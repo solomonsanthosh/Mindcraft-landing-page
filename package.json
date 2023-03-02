@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build  && firebase deploy",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -24,6 +24,7 @@
     "@ng-bootstrap/ng-bootstrap": "^14.0.1",
     "@ngneat/hot-toast": "^5.0.1",
     "@ngneat/overview": "^3.0.0",
+    
     "@syncfusion/ej2-angular-calendars": "^20.4.51",
     "angular-responsive-carousel": "^2.1.2",
     "angular-toastify": "^1.0.4",

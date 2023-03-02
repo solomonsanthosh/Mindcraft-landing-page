@@ -1,33 +1,39 @@
 <div class="w-[100%] min-h-screen pt-[6rem] bg-[#f6f6f6] relative">
   <div
-    class="w-[80%] mx-auto flex justify-around items-center h-[40vh] bg-[#ffffff] relative shadow-lg"
+    class="w-[90%] sm:w-[80%] mx-auto flex-col sm:flex-row flex justify-around items-center sm:h-[40vh] bg-[#ffffff] relative shadow-lg"
   >
-    <div class="h-full flex flex-col justify-evenly">
-      <p class="text-3xl font-semibold">
+    <div class="h-[50%] sm:p-0 p-5 sm:h-full flex flex-col justify-center">
+      <p class="text-xl z-10 text-white my-2 sm:my-4 sm:text-3xl font-semibold">
         Hey there,
         {{
           user.name.split(" ")[0].charAt(0).toUpperCase() +
             user.name.split(" ")[0].slice(1).toLowerCase()
         }}!
       </p>
-      <div>
+      <!-- <div>
         <p class="mb-4">Activities completed</p>
         <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
-      </div>
-      <p>
+      </div> -->
+      <p class="z-10 text-white text-[.8rem] sm:text-[1rem]">
         <i>“Tough times never last, but tough people do!” — Robert Schuller</i>
       </p>
     </div>
     <div class="z-10">
-      <img class="" src="../../assets/guitar.png" alt="" />
+      <img
+        class="w-[80%] sm:w-full mx-auto"
+        src="../../assets/guitar.png"
+        alt=""
+      />
     </div>
-    <div class="absolute top-0 right-0 w-[30vw] bg-slate-700 h-[40vh]"></div>
+    <div
+      class="absolute top-0 right-0 w-full bg-slate-700 h-full sm:h-[40vh]"
+    ></div>
   </div>
 
   <app-songs></app-songs>
 
   <app-activity></app-activity>
-  <div class="w-[80%] py-10 mx-auto">
+  <div *ngIf="stories.length > 0; else nostory" class="w-[80%] py-10 mx-auto">
     <carousel
       class="border rounded-md"
       [objectFit]="'cover'"
@@ -54,4 +60,7 @@
       </div>
     </carousel>
   </div>
+  <ng-template #nostory
+    ><h1 class="text-center py-10">No stories....</h1></ng-template
+  >
 </div>

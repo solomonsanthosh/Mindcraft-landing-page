@@ -1,0 +1,6 @@
+.disabled {
+    background-color: rgb(189, 189, 189);
+}
+.enable {
+    background-color: #000000;
+}

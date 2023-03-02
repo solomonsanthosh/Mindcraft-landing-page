@@ -2,6 +2,7 @@ import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { PostService } from 'src/services/post.service';
+import Post from 'src/Interfaces/post.interface';
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
@@ -40,7 +41,7 @@ export class PostsComponent implements OnInit {
   //   this.postService.addCurrentPost(post);
   //   this.route.navigate(['/comments', post._id]);
   // }
-  deletePost(post: any) {
+  deletePost(post: Post) {
     this.http
       .delete(`https://mindcraft-server.onrender.com/deletepost/${post._id}`)
       .subscribe((res: any) => {
@@ -77,11 +78,11 @@ export class PostsComponent implements OnInit {
         )
         .subscribe((res: any) => {
           this.contents = res;
+          console.log(res);
         });
     }
   }
   addPost(res: any) {
-    console.log(res);
     res.owner = this.user;
     this.contents.unshift(res);
   }

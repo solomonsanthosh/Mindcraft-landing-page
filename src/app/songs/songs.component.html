@@ -1,8 +1,8 @@
-<div class="w-[80%] my-10 mx-auto">
+<div class="w-[90%] sm:w-[80%] my-10 mx-auto">
   <p class="text-xl font-semibold mb-8">Music to listen</p>
   <div
     *ngIf="songs.length > 0; else nopost"
-    class="grid grid-cols-2 gap-5 justify-center mx-auto"
+    class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-5 justify-center mx-auto"
   >
     <div
       *ngFor="let song of songs"
