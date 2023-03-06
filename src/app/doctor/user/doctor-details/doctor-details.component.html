@@ -1,0 +1,82 @@
+<div
+  class="w-[100%] min-h-screen pt-[6rem] px-[.2rem] sm:px-[4rem] bg-[#f6f6f6] relative"
+>
+  <a
+    routerLink="/session"
+    class="z-30 absolute top-[10%] left-[4%] sm:top-[12%] sm:left-32 text-4xl text-[#4888d2] font-mono"
+  >
+    <
+  </a>
+  <div
+    *ngIf="popup"
+    class="z-50 w-full h-full fixed bottom-0 left-0 bg-[#00000058] flex justify-center items-center"
+  >
+    <div
+      class="w-[80%] sm:w-[45%] p-5 h-[200px] rounded-md bg-[#f6f6f6] flex flex-col justify-center items-center"
+    >
+      <h1 class="mb-5">
+        Request to schedule a meet with doctor {{ currentDoctor.name }}?
+      </h1>
+      <div class="w-full flex justify-center items-center">
+        <button
+          (click)="session()"
+          class="w-[30%] text-white bg-green-600 mr-3 rounded-lg py-2 px-3 my-3"
+        >
+          Yes
+        </button>
+        <button
+          (click)="popup = false"
+          class="w-[30%] text-white bg-green-600 rounded-lg py-2 px-3 my-3"
+        >
+          No
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="w-[80%] mx-auto">
+    <h1 class="text-blue-500 text-xl my-3">{{ doctor.name }}</h1>
+    <p class="text-[1.1rem] mb-2">About: {{ doctor.about }}</p>
+    <p class="text-[1.1rem]">Experience: {{ doctor.experience }} years</p>
+    <div class="flex items-center">
+      <h1 class="py-2 mr-2 font-bold text-gray-700">Rating:</h1>
+      <star-rating
+        *ngIf="doctor.rating !== 0; else norating"
+        [value]="doctor.rating"
+        [totalstars]="5"
+        checkedcolor="#EA580C"
+        uncheckedcolor="#B2B2B2"
+        size="24px"
+        [readonly]="true"
+      ></star-rating>
+      <ng-template #norating>No ratings yet</ng-template>
+    </div>
+    <div class="flex justify-between flex-col sm:flex-row sm:items-center">
+      <h1 class="py-2 font-bold text-gray-700">
+        Fee:
+        <span class="font-normal">{{ doctor.fee }}</span>
+      </h1>
+
+      <button
+        (click)="popup = true; currentDoctor = doctor"
+        class="py-2 text-white px-4 rounded-full bg-green-600"
+      >
+        Request a session
+      </button>
+    </div>
+    <div *ngIf="doctor.reviews.length !== 0">
+      <h1 class="text-lg py-2 font-bold text-gray-700">Reviews</h1>
+      <div *ngFor="let review of doctor.reviews" class="mb-3">
+        <h1 class="text-blue-500">@{{ review.user_id.name }}</h1>
+        <star-rating
+          [value]="review.rating"
+          [totalstars]="5"
+          checkedcolor="#EA580C"
+          uncheckedcolor="#B2B2B2"
+          size="24px"
+          [readonly]="true"
+        ></star-rating>
+        <p class="text-gray-700">{{ review.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>

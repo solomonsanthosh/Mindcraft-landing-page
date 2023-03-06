@@ -16,6 +16,9 @@ export class MeetRequestsComponent implements OnInit {
 
   currentDate: Date;
   currentRequest: any;
+  ratingPopup: Boolean = false;
+  rating: Number = 0;
+  ratingDescription: string;
 
   @ViewChild('cardElement') cardElem!: ElementRef;
   constructor(
@@ -127,5 +130,33 @@ export class MeetRequestsComponent implements OnInit {
 
       this.cardElem.nativeElement.style.display = 'flex';
     }
+  }
+  createReview() {
+    console.log(this.currentRequest);
+
+    this.http
+      .post('https://mindcraft-server.onrender.com/review', {
+        user_id: this.currentRequest.user,
+        doctor_id: this.currentRequest.doctor._id,
+        rating: this.rating,
+        description: this.ratingDescription,
+      })
+      .subscribe((res) => {
+        console.log(res);
+        this.ratingPopup = false;
+        this.rating = 0;
+        this.ratingDescription = '';
+        this.toast.success('Review added successfully', {
+          style: {
+            border: '1px solid #44B159',
+            padding: '16px',
+            color: '#44B159',
+          },
+          iconTheme: {
+            primary: '#44B159',
+            secondary: '#FFFAEE',
+          },
+        });
+      });
   }
 }

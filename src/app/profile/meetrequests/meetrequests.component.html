@@ -17,7 +17,29 @@
     </button>
   </div>
 </div>
-
+<div
+  *ngIf="ratingPopup"
+  class="z-50 w-full h-full fixed bottom-0 left-0 bg-[#00000058] flex justify-center items-center"
+>
+  <div
+    class="w-[45%] p-5 relative rounded-md bg-[#f6f6f6] flex flex-col justify-center items-center"
+  >
+    <span class="absolute right-5 top-5 text-xl font-bold">X</span>
+    <h1 class="">Write a review</h1>
+    <ngx-star-rating [(ngModel)]="rating"></ngx-star-rating>
+    <textarea
+      class="w-full"
+      [(ngModel)]="ratingDescription"
+      rows="5"
+    ></textarea>
+    <button
+      (click)="createReview()"
+      class="w-[30%] text-white bg-green-600 rounded-lg py-2 px-3 my-3"
+    >
+      Add Review
+    </button>
+  </div>
+</div>
 <div class="min-h-screen w-full flex relative">
   <div class="w-full mx-auto justify-center">
     <div
@@ -26,7 +48,7 @@
     >
       <div
         class="flex w-full justify-between items-center"
-        *ngIf="request.accepted"
+        *ngIf="request.accepted && !request.completed"
       >
         <h1 class="py-2 font-medium text-gray-700">
           Meeting has been scheduled
@@ -45,16 +67,32 @@
         <button
           *ngIf="!request.paid"
           (click)="checkPay(request)"
-          class="py-2 px-4 rounded-full bg-green-500"
+          class="py-2 px-4 rounded-full bg-blue-500 text-white"
         >
           Pay
         </button>
       </div>
-      <div *ngIf="!request.accepted">
+      <div *ngIf="!request.accepted && !request.completed">
         <h1 class="py-2 font-medium text-gray-700">
           Meet request has been sent to doctor
           <span>{{ request.doctor.name }}</span>
         </h1>
+      </div>
+      <div
+        *ngIf="request.completed"
+        class="w-full flex shadow-sm justify-between items-center"
+      >
+        <h1 class="py-2 font-medium text-gray-700">
+          Your scheduled Meet with
+          <span>{{ request.doctor.name }}</span> at
+          <span class="text-blue-600">{{ request.meet_time }}</span> is over
+        </h1>
+        <button
+          (click)="ratingPopup = true; currentRequest = request"
+          class="py-2 px-4 rounded-full bg-orange-600 text-white"
+        >
+          Write a review
+        </button>
       </div>
     </div>
   </div>

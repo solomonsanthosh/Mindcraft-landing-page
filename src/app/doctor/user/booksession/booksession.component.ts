@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/services/auth.service';
 import { HotToastService } from '@ngneat/hot-toast';
+import { StarRatingComponent } from 'ng-starrating';
 @Component({
   selector: 'app-booksession',
   templateUrl: './booksession.component.html',
@@ -11,6 +12,7 @@ export class BooksessionComponent implements OnInit {
   doctors: any = [];
   razorpay: any;
   user: any;
+  totalRating: Number = 0;
   currentDoctor: any;
   popup: boolean = false;
   options: {};

@@ -24,7 +24,6 @@
     "@ng-bootstrap/ng-bootstrap": "^14.0.1",
     "@ngneat/hot-toast": "^5.0.1",
     "@ngneat/overview": "^3.0.0",
-    
     "@syncfusion/ej2-angular-calendars": "^20.4.51",
     "angular-responsive-carousel": "^2.1.2",
     "angular-toastify": "^1.0.4",
@@ -32,6 +31,8 @@
     "igniteui-angular": "^15.0.9",
     "install": "^0.13.0",
     "login": "^0.8.0",
+    "ng-starrating": "^1.0.20",
+    "ngx-star-rating": "^2.1.0",
     "npm": "^9.4.1",
     "razorpay": "^2.8.4",
     "rxjs": "~7.8.0",

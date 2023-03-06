@@ -10,10 +10,15 @@ import { NavService } from 'src/services/nav.service';
 export class MeetsComponent {
   user: any;
   requests: any;
+  popup: boolean = false;
+  currentMeet: any;
   constructor(private nav: NavService, private http: HttpClient) {}
   ngOnInit(): void {
     this.nav.hide();
     this.user = JSON.parse(localStorage.getItem('user')!);
+    this.getMeets();
+  }
+  getMeets() {
     this.http
       .get(`https://mindcraft-server.onrender.com/getmeets/${this.user._id}`)
       .subscribe((res: any) => {
@@ -23,6 +28,16 @@ export class MeetsComponent {
           element.meet_time = d.toString();
         });
         this.requests = res;
+      });
+  }
+  completeMeet() {
+    this.http
+      .put('https://mindcraft-server.onrender.com/completerequest', {
+        request_id: this.currentMeet._id,
+      })
+      .subscribe((res) => {
+        this.popup = false;
+        this.getMeets();
       });
   }
 }

@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { HotToastModule } from '@ngneat/hot-toast';
-
+import { RatingModule } from 'ng-starrating';
 // page components
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SongsComponent } from './songs/songs.component';
@@ -38,6 +38,9 @@ import { DoctormeetComponent } from './doctor/doctormeet/doctormeet.component';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { SinglestoryComponent } from './post/singlestory/singlestory.component';
 import { HomeComponent } from './home/home.component';
+import { NgxStarRatingModule } from 'ngx-star-rating';
+import { DoctorDetailsComponent } from './doctor/user/doctor-details/doctor-details.component';
+import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,6 +66,8 @@ import { HomeComponent } from './home/home.component';
     DoctormeetComponent,
     SinglestoryComponent,
     HomeComponent,
+    DoctorDetailsComponent,
+    ForgotpasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,6 +83,8 @@ import { HomeComponent } from './home/home.component';
     BrowserAnimationsModule,
     IvyCarouselModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    RatingModule,
+    NgxStarRatingModule,
   ],
   providers: [AuthService, PostService, NavService],
   bootstrap: [AppComponent],

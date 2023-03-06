@@ -269,7 +269,7 @@ export class AuthService {
     const user = JSON.parse(localStorage.getItem('user')!);
     console.log(user, 'lll');
 
-    return user !== null ? true : false;
+    return user !== null && user.role !== 'doctor' ? true : false;
   }
   logout() {
     localStorage.setItem('user', null!);

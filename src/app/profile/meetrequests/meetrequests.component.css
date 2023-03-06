@@ -4,3 +4,9 @@
 .enable {
     background-color: #000000;
 }
+textarea {
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    padding: .5rem 1rem;
+    border: 2px solid rgb(128, 128, 128);
+}

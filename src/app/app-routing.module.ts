@@ -18,6 +18,8 @@ import { MeetsComponent } from './doctor/meets/meets.component';
 import { SinglestoryComponent } from './post/singlestory/singlestory.component';
 import { ProfileComponent } from './profile/profile/profile.component';
 import { HomeComponent } from './home/home.component';
+import { DoctorDetailsComponent } from './doctor/user/doctor-details/doctor-details.component';
+import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -53,6 +55,15 @@ const routes: Routes = [
   {
     path: 'comments/:id',
     component: CommentsComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'forgotpassword',
+    component: ForgotpasswordComponent,
+  },
+  {
+    path: 'doctor/:id',
+    component: DoctorDetailsComponent,
     canActivate: [AuthGuard],
   },
   // { path: 'test', component: TestComponent, canActivate: [AuthGuard] },
