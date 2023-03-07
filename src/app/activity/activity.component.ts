@@ -16,9 +16,7 @@ export class ActivityComponent implements OnInit {
   constructor(private http: HttpClient) {}
   private getActivities() {
     this.http
-      .get(
-        `https://mindcraft-server.onrender.com/api/getactivity/${this.user.topic}`
-      )
+      .get(`http://18.181.218.216:8000/api/getactivity/${this.user.topic}`)
       .subscribe((res) => {
         this.activities = res;
       });

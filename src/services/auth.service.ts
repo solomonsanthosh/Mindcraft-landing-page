@@ -51,7 +51,7 @@ export class AuthService {
           },
         });
         this.http
-          .post('https://mindcraft-server.onrender.com/api/createuser', user)
+          .post('http://18.181.218.216:8000/api/createuser', user)
           .subscribe((data: any) => {
             console.log(data);
 
@@ -83,9 +83,7 @@ export class AuthService {
       .signInWithEmailAndPassword(user.email, user.password)
       .then((result) => {
         this.http
-          .get(
-            `https://mindcraft-server.onrender.com/api/getsingleuser/${user.email}`
-          )
+          .get(`http://18.181.218.216:8000/api/getsingleuser/${user.email}`)
           .subscribe((res: any) => {
             this.toast.success('Login successful', {
               style: {
@@ -144,7 +142,7 @@ export class AuthService {
       .signInWithPopup(provider)
       .then((result: any) => {
         this.http
-          .post('https://mindcraft-server.onrender.com/api/createuser', {
+          .post('http://18.181.218.216:8000/api/createuser', {
             email: result.user.email,
             name: result.user.displayName,
           })
@@ -214,12 +212,12 @@ export class AuthService {
         });
         this.http
           .get(
-            `https://mindcraft-server.onrender.com/api/getsingleuser/${result.user.email}`
+            `http://18.181.218.216:8000/api/getsingleuser/${result.user.email}`
           )
           .subscribe((res: any) => {
             if (res == null) {
               this.http
-                .post('https://mindcraft-server.onrender.com/api/createuser', {
+                .post('http://18.181.218.216:8000/api/createuser', {
                   email: result.user.email,
                   name: result.user.displayName,
                 })
