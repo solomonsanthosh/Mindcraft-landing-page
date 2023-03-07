@@ -1,5 +1,6 @@
 .bg {
     background: url(../../assets/bg.jpg) center/cover;
+    background-attachment: fixed;
     
 }
 .bg::after{
