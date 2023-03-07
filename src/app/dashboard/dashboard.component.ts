@@ -37,10 +37,10 @@ export class DashboardComponent implements OnInit {
     this.showMusic = true;
     this.audioList = this.audioList.filter(
       (audio: any) =>
-        audio.url !== `http://18.181.218.216:8000/api/api/getmusicfile/${event}`
+        audio.url !== `http://18.181.218.216:8000/api/getmusicfile/${event}`
     );
     this.audioList.unshift({
-      url: `http://18.181.218.216:8000/api/api/getmusicfile/${event}`,
+      url: `http://18.181.218.216:8000/api/getmusicfile/${event}`,
       title: event,
     });
   }
@@ -49,7 +49,7 @@ export class DashboardComponent implements OnInit {
 
     event.map((music: any) => {
       this.audioList.push({
-        url: `http://18.181.218.216:8000/api/api/getmusicfile/${music.song}`,
+        url: `http://18.181.218.216:8000/api/getmusicfile/${music.song}`,
         title: music.song,
       });
     });
