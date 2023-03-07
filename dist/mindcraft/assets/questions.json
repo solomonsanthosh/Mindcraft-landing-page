@@ -1,0 +1,133 @@
+{"questions" :  [
+    {   "id":1,
+        "question":"How long have you been feeling low ?",
+        "options":[
+            {
+                "text":"few weeks or more",
+                "type":"null"
+            },
+            {
+                "text":"Around six weeks",
+                "type":"depression"
+            }
+        ]
+    },
+    {  "id":2,
+        "question":"Are you sleeping more or less than you normally do ?",
+        "options":[
+            {
+                "text":"No",
+                "type":"null"
+            },
+            {
+                "text":"Yes",
+                "type":"depression"
+            }
+        ]
+    },
+    {"id":3,
+        "question":"Trouble concentrating on things, such as reading the newspaper or watching television ?",
+        "options":[
+            {
+                "text":"No",
+                "type":"null"
+            },
+            {
+                "text":"Yes",
+                "type":"depression"
+            }
+        ]
+    },
+    {"id":4,
+        "question":"Has there ever been a tragic event in your life ?",
+        "options":[
+            {
+                "text":"No",
+                "type":"null"
+            },
+            {
+                "text":"Yes",
+                "type":"ptsd"
+            }
+        ]
+    }
+    ,
+    
+    {"id":5,
+        "question":"If yes, Are you uninterested in activities you enjoyed before the traumatic event ?",
+        "options":[
+            {
+                "text":"No",
+                "type":"null"
+            },
+            {
+                "text":"Yes",
+                "type":"ptsd"
+            }
+        ]
+    },
+    
+    {"id":6,
+        "question":"Do you feel disconnected from people ?",
+        "options":[
+            {
+                "text":"No",
+                "type":"null"
+            },
+            {
+                "text":"Yes",
+                "type":"ptsd"
+            }
+        ]
+    },
+    
+    
+    {"id":7,
+        "question":"Do you having a hard time relaxing ?",
+        "options":[
+            {
+                "text":"No",
+                "type":"null"
+            },
+            {
+                "text":"Yes",
+                "type":"anxiety"
+            }
+        ]
+    },
+    
+    
+    
+    {"id":8,
+        "question":"Do you worry that something bad will happen ?",
+        "options":[
+            {
+                "text":"No",
+                "type":"null"
+            },
+            {
+                "text":"Yes",
+                "type":"anxiety"
+            }
+        ]
+    },
+    
+    
+    
+    
+    {"id":9,
+        "question":" Worrying too much about different things ?",
+        "options":[
+            {
+                "text":"No",
+                "type":"null"
+            },
+            {
+                "text":"Yes",
+                "type":"anxiety"
+            }
+        ]
+    }
+
+    
+]}
