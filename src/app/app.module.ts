@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { RatingModule } from 'ng-starrating';
+import { AngMusicPlayerModule } from 'ang-music-player';
 // page components
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SongsComponent } from './songs/songs.component';
@@ -85,6 +86,7 @@ import { ForgotpasswordComponent } from './auth/forgotpassword/forgotpassword.co
     AngularFireModule.initializeApp(environment.firebaseConfig),
     RatingModule,
     NgxStarRatingModule,
+    AngMusicPlayerModule,
   ],
   providers: [AuthService, PostService, NavService],
   bootstrap: [AppComponent],

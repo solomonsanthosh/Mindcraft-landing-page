@@ -43,7 +43,7 @@ export class DoctorComponent {
         )
         .then((response) => {
           this.http
-            .post('https://mindcraft-server.onrender.com/verifycoach', {
+            .post('https://mindcraft-server.onrender.com/api/verifycoach', {
               name: form.form.value.name.trim(),
               email: form.form.value.email.trim(),
               about: form.form.value.about,

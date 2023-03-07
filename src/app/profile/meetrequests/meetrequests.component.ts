@@ -44,7 +44,7 @@ export class MeetRequestsComponent implements OnInit {
   getUserRequest() {
     this.http
       .get(
-        `https://mindcraft-server.onrender.com/getuserrequest/${this.user._id}`
+        `https://mindcraft-server.onrender.com/api/getuserrequest/${this.user._id}`
       )
       .subscribe((res: any) => {
         console.log(res);
@@ -79,7 +79,7 @@ export class MeetRequestsComponent implements OnInit {
   }
   sendPayment() {
     this.http
-      .post('https://mindcraft-server.onrender.com/payment', {
+      .post('https://mindcraft-server.onrender.com/api/payment', {
         name: this.user.name,
         amt: this.currentRequest.doctor.fee,
       })
@@ -97,7 +97,7 @@ export class MeetRequestsComponent implements OnInit {
               this.cardElem.nativeElement.style.display = 'none';
               this.http
                 .put(
-                  `https://mindcraft-server.onrender.com/makepayment/${this.currentRequest._id}`,
+                  `https://mindcraft-server.onrender.com/api/makepayment/${this.currentRequest._id}`,
                   {
                     currentRequest: this.currentRequest,
                   }
@@ -135,7 +135,7 @@ export class MeetRequestsComponent implements OnInit {
     console.log(this.currentRequest);
 
     this.http
-      .post('https://mindcraft-server.onrender.com/review', {
+      .post('https://mindcraft-server.onrender.com/api/review', {
         user_id: this.currentRequest.user,
         doctor_id: this.currentRequest.doctor._id,
         rating: this.rating,

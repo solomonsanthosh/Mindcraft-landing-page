@@ -16,7 +16,9 @@ export class SinglestoryComponent implements OnInit {
   }
   getStory() {
     this.http
-      .get(`https://mindcraft-server.onrender.com/getsinglestory/${this.id}`)
+      .get(
+        `https://mindcraft-server.onrender.com/api/getsinglestory/${this.id}`
+      )
       .subscribe((res: any) => {
         console.log(res);
 

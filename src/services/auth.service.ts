@@ -51,7 +51,7 @@ export class AuthService {
           },
         });
         this.http
-          .post('https://mindcraft-server.onrender.com/createuser', user)
+          .post('https://mindcraft-server.onrender.com/api/createuser', user)
           .subscribe((data: any) => {
             console.log(data);
 
@@ -84,7 +84,7 @@ export class AuthService {
       .then((result) => {
         this.http
           .get(
-            `https://mindcraft-server.onrender.com/getsingleuser/${user.email}`
+            `https://mindcraft-server.onrender.com/api/getsingleuser/${user.email}`
           )
           .subscribe((res: any) => {
             this.toast.success('Login successful', {
@@ -144,7 +144,7 @@ export class AuthService {
       .signInWithPopup(provider)
       .then((result: any) => {
         this.http
-          .post('https://mindcraft-server.onrender.com/createuser', {
+          .post('https://mindcraft-server.onrender.com/api/createuser', {
             email: result.user.email,
             name: result.user.displayName,
           })
@@ -214,12 +214,12 @@ export class AuthService {
         });
         this.http
           .get(
-            `https://mindcraft-server.onrender.com/getsingleuser/${result.user.email}`
+            `https://mindcraft-server.onrender.com/api/getsingleuser/${result.user.email}`
           )
           .subscribe((res: any) => {
             if (res == null) {
               this.http
-                .post('https://mindcraft-server.onrender.com/createuser', {
+                .post('https://mindcraft-server.onrender.com/api/createuser', {
                   email: result.user.email,
                   name: result.user.displayName,
                 })

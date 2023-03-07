@@ -20,7 +20,9 @@ export class MeetsComponent {
   }
   getMeets() {
     this.http
-      .get(`https://mindcraft-server.onrender.com/getmeets/${this.user._id}`)
+      .get(
+        `https://mindcraft-server.onrender.com/api/getmeets/${this.user._id}`
+      )
       .subscribe((res: any) => {
         console.log(res);
         res.map((element: any) => {
@@ -32,7 +34,7 @@ export class MeetsComponent {
   }
   completeMeet() {
     this.http
-      .put('https://mindcraft-server.onrender.com/completerequest', {
+      .put('https://mindcraft-server.onrender.com/api/completerequest', {
         request_id: this.currentMeet._id,
       })
       .subscribe((res) => {

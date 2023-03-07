@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -10,19 +10,26 @@ export class SongsComponent implements OnInit {
   songs: any[] = [];
   user: any;
   ngOnInit() {
+    console.log('ko');
+
     this.user = JSON.parse(localStorage.getItem('user')!);
     this.getSongs();
   }
+  @Output()
+  musicSelected: EventEmitter<string> = new EventEmitter<string>();
+  @Output()
+  musicFiles: EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private http: HttpClient) {}
-
+  onMusicSelect(event: any) {
+    this.musicSelected.emit(event);
+  }
   private getSongs() {
     this.http
-      .get(`https://mindcraft-server.onrender.com/getmusic/${this.user.topic}`)
+      .get(`http://localhost:8000/api/getmusic/${this.user.topic}`)
       .subscribe((res: any) => {
-        console.log(res);
-
         this.songs = res;
+        this.musicFiles.emit(res);
       });
   }
 }

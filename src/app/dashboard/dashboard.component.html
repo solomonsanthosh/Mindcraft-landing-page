@@ -1,3 +1,14 @@
+<div
+  *ngIf="showMusic"
+  class="fixed bottom-[5%] z-10 left-[50%] translate-x-[-50%] flex justify-center items-center"
+>
+  <ang-music-player [audioList]="audioList"></ang-music-player>
+  <button (click)="showMusic = false">
+    <img
+      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAABSklEQVR4nO2WO04DMRCGv0ukIA9ESRGq0BEOEAkizhHyOAsdKIiCkj6PmxAuAAodWbokSmRpVlqtYnvWu4EU+aWRVrZmP894PDYcdYA6BXrAFJgBv2IzGesCtSKBFeAJWAEbj62BN+AsL/QOiBTAtC2Adih0IBFkhSaj74dEus4BTcLVkVcD0+tKe1kDfikQGttQc2Rs1XsFXALzHXNmrAE0Lb4ryaRVPceqzY+N6in4XMaQhdn8713gicMxCYjhu8Zs/iMX+MOzV2mQFrqRDmeVppq/gYuEzznwpfCL9gH+VPj9HGSqJ/9VXN09HqeOC1xzNJCmp4GYuWuL79LXQIyeFYWS1R5RXvyLAqGmmk9QqqV8cWiuxVstNFa/gIeA6f1Bagem3aT3hpwqAQ9SmZooX7PsqUZVudrGwLu010i+R3JOvUfmKP5aW9phkM5mm0cTAAAAAElFTkSuQmCC"
+    />
+  </button>
+</div>
 <div class="w-[100%] min-h-screen pt-[6rem] bg-[#f6f6f6] relative">
   <div
     class="w-[90%] sm:w-[80%] mx-auto flex-col sm:flex-row flex justify-around items-center sm:h-[40vh] bg-[#ffffff] relative shadow-lg"
@@ -10,10 +21,7 @@
             user.name.split(" ")[0].slice(1).toLowerCase()
         }}!
       </p>
-      <!-- <div>
-        <p class="mb-4">Activities completed</p>
-        <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
-      </div> -->
+
       <p class="z-10 text-white text-[.8rem] sm:text-[1rem]">
         <i>“Tough times never last, but tough people do!” — Robert Schuller</i>
       </p>
@@ -30,7 +38,10 @@
     ></div>
   </div>
 
-  <app-songs></app-songs>
+  <app-songs
+    (musicFiles)="musicFiles($event)"
+    (musicSelected)="musicSelect($event)"
+  ></app-songs>
 
   <app-activity></app-activity>
   <div *ngIf="stories.length > 0; else nostory" class="w-[80%] py-10 mx-auto">

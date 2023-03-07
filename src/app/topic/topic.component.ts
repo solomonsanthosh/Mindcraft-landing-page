@@ -24,7 +24,7 @@ export class TopicComponent implements OnInit {
   };
   save() {
     this.http
-      .post<any>('https://mindcraft-server.onrender.com/topic', {
+      .post<any>('https://mindcraft-server.onrender.com/api/topic', {
         user: {
           topic: this.selected,
           email: this.user.email,

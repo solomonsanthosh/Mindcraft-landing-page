@@ -28,7 +28,7 @@ export class CommentsComponent implements OnInit {
 
     this.http
       .get(
-        `https://mindcraft-server.onrender.com/getpostsingle/${this.currentPostId}`
+        `https://mindcraft-server.onrender.com/api/getpostsingle/${this.currentPostId}`
       )
       .subscribe((res: any) => {
         console.log(res, 'comment');
@@ -39,7 +39,7 @@ export class CommentsComponent implements OnInit {
   addComment() {
     if (this.comment) {
       this.http
-        .post(`https://mindcraft-server.onrender.com/createcomment/`, {
+        .post(`https://mindcraft-server.onrender.com/api/createcomment/`, {
           postid: this.currentPostId,
           content: {
             topic: this.user.topic,

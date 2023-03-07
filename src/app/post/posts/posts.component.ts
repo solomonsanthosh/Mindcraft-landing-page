@@ -32,7 +32,9 @@ export class PostsComponent implements OnInit {
 
   getPosts() {
     this.http
-      .get(`https://mindcraft-server.onrender.com/getpost/${this.user.topic}`)
+      .get(
+        `https://mindcraft-server.onrender.com/api/getpost/${this.user.topic}`
+      )
       .subscribe((res: any) => {
         this.contents = res;
       });
@@ -43,14 +45,18 @@ export class PostsComponent implements OnInit {
   // }
   deletePost(post: Post) {
     this.http
-      .delete(`https://mindcraft-server.onrender.com/deletepost/${post._id}`)
+      .delete(
+        `https://mindcraft-server.onrender.com/api/deletepost/${post._id}`
+      )
       .subscribe((res: any) => {
         this.contents = this.contents.filter((con) => con._id !== post._id);
       });
   }
   getSuccessStories() {
     this.http
-      .get(`https://mindcraft-server.onrender.com/getstory/${this.user.topic}`)
+      .get(
+        `https://mindcraft-server.onrender.com/api/getstory/${this.user.topic}`
+      )
       .subscribe((res: any) => {
         this.stories = res;
         console.log(res);
@@ -62,7 +68,9 @@ export class PostsComponent implements OnInit {
       this.showCreate = true;
       this.showStories = false;
       this.http
-        .get(`https://mindcraft-server.onrender.com/getpost/${this.user.topic}`)
+        .get(
+          `https://mindcraft-server.onrender.com/api/getpost/${this.user.topic}`
+        )
         .subscribe((res: any) => {
           this.contents = res;
         });
@@ -74,7 +82,7 @@ export class PostsComponent implements OnInit {
       this.showCreate = false;
       this.http
         .get(
-          `https://mindcraft-server.onrender.com/getpostuser/${this.user._id}`
+          `https://mindcraft-server.onrender.com/api/getpostuser/${this.user._id}`
         )
         .subscribe((res: any) => {
           this.contents = res;
@@ -88,7 +96,7 @@ export class PostsComponent implements OnInit {
   }
   addStory() {
     this.http
-      .post<any>('https://mindcraft-server.onrender.com/createstory', {
+      .post<any>('https://mindcraft-server.onrender.com/api/createstory', {
         topic: this.user.topic,
         owner: this.user._id,
         story: this.story,

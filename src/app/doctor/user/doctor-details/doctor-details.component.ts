@@ -17,7 +17,7 @@ export class DoctorDetailsComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('user')!);
     this.id = this.route.snapshot.paramMap.get('id');
     this.http
-      .get(`https://mindcraft-server.onrender.com/doctor/${this.id}`)
+      .get(`https://mindcraft-server.onrender.com/api/doctor/${this.id}`)
       .subscribe((res) => {
         this.doctor = res;
       });
@@ -29,7 +29,7 @@ export class DoctorDetailsComponent implements OnInit {
   ) {}
   session() {
     this.http
-      .post('https://mindcraft-server.onrender.com/createrequest', {
+      .post('https://mindcraft-server.onrender.com/api/createrequest', {
         user: this.user._id,
         doctor: this.currentDoctor._id,
       })
