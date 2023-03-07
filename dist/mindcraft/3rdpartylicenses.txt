@@ -137,6 +137,9 @@ MIT
 @ngneat/overview
 MIT
 
+ang-music-player
+ISC
+
 angular-responsive-carousel
 Apache License 2.0
 

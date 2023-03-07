@@ -26,7 +26,7 @@ export class SongsComponent implements OnInit {
   }
   private getSongs() {
     this.http
-      .get(`http://localhost:8000/api/getmusic/${this.user.topic}`)
+      .get(`https://mindcraft-server.onrender.com/api/api/getmusic/${this.user.topic}`)
       .subscribe((res: any) => {
         this.songs = res;
         this.musicFiles.emit(res);

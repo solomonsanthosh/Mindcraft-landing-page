@@ -39,10 +39,10 @@ export class DashboardComponent implements OnInit {
     this.showMusic = true;
     this.audioList = this.audioList.filter(
       (audio: any) =>
-        audio.url !== `http://localhost:8000/api/getmusicfile/${event}`
+        audio.url !== `https://mindcraft-server.onrender.com/api/api/getmusicfile/${event}`
     );
     this.audioList.unshift({
-      url: `http://localhost:8000/api/getmusicfile/${event}`,
+      url: `https://mindcraft-server.onrender.com/api/api/getmusicfile/${event}`,
       title: event,
     });
   }
@@ -51,7 +51,7 @@ export class DashboardComponent implements OnInit {
 
     event.map((music: any) => {
       this.audioList.push({
-        url: `http://localhost:8000/api/getmusicfile/${music.song}`,
+        url: `https://mindcraft-server.onrender.com/api/api/getmusicfile/${music.song}`,
         title: music.song,
       });
     });
