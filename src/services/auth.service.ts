@@ -215,6 +215,8 @@ export class AuthService {
             `http://18.181.218.216:8000/api/getsingleuser/${result.user.email}`
           )
           .subscribe((res: any) => {
+            console.log(res, 'res');
+
             if (res == null) {
               this.http
                 .post('http://18.181.218.216:8000/api/createuser', {
@@ -236,7 +238,7 @@ export class AuthService {
               if (res.topic) {
                 localStorage.setItem('user', JSON.stringify(res));
 
-                this.router.navigate(['topic']);
+                this.router.navigate(['dashboard']);
               } else {
                 localStorage.setItem('user', JSON.stringify(res));
 

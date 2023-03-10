@@ -48,6 +48,8 @@ export class DashboardComponent implements OnInit {
     console.log(event);
 
     event.map((music: any) => {
+      console.log(music, 'music');
+
       this.audioList.push({
         url: `http://18.181.218.216:8000/api/getmusicfile/${music.song}`,
         title: music.song,
