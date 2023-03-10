@@ -32,6 +32,8 @@ export class DoctorComponent {
     this.status = form.form.status;
 
     if (this.status != 'INVALID') {
+      console.log('err');
+
       // let formData = new FormData();
       // formData.set('name', 'document');
       // formData.set('file', this.file);
@@ -42,8 +44,9 @@ export class DoctorComponent {
           form.form.value.password.trim()
         )
         .then((response) => {
+          console.log(response, 'res');
           this.http
-            .post('http://18.181.218.216:8000/api/verifycoach', {
+            .post('http://18.181.218.216:8080/api/verifycoach', {
               name: form.form.value.name.trim(),
               email: form.form.value.email.trim(),
               about: form.form.value.about,
@@ -52,6 +55,8 @@ export class DoctorComponent {
               fee: form.form.value.fee,
             })
             .subscribe((res) => {
+              console.log(res, 'res');
+
               this.route.navigate(['/signup']);
               this.toast.success(
                 'Request submitted successfully. Further information will be sent to your email',

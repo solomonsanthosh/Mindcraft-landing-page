@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
   }
   onSave() {
     this.http
-      .put('http://18.181.218.216:8000/api/updateuser', {
+      .put('http://18.181.218.216:8080/api/updateuser', {
         id: this.user._id,
         name: this.name,
       })
