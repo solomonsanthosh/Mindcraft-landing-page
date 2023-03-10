@@ -250,6 +250,7 @@ export class AuthService {
 
         //
       })
+
       .catch((error) => {
         this.toast.error(error.code, {
           style: {
