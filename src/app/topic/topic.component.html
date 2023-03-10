@@ -3,8 +3,29 @@
     <h1 class="text-2xl font-semibold py-[3rem]">
       Tell Mindcraft what you are dealing with.
     </h1>
+    <div>
+      <h1 class="mb-4 text-[1.2rem]">{{ topics[topicIndex].question1 }}</h1>
+      <h1 class="mb-4 text-[1.2rem]">{{ topics[topicIndex].question2 }}</h1>
+      <h1 class="mb-4 text-[1.2rem]">{{ topics[topicIndex].question3 }}</h1>
+      <h1 class="mb-4 text-[1.2rem]">{{ topics[topicIndex].question4 }}</h1>
+      <h1 class="mb-4 text-[1.2rem]">{{ topics[topicIndex].question5 }}</h1>
 
-    <div class="w-[40%] flex flex-wrap justify-start">
+      <div class="flex mt-10">
+        <button
+          (click)="changeTopic()"
+          class="text-blue-500 text-[1.1rem] shadow-md flex items-center justify-center font-bold px-6 py-2 rounded-full"
+        >
+          No
+        </button>
+        <button
+          (click)="save()"
+          class="text-blue-500 text-[1.1rem] ml-4 shadow-md flex items-center justify-center font-bold px-6 py-2 rounded-full"
+        >
+          Mostly yes
+        </button>
+      </div>
+    </div>
+    <!-- <div class="w-[40%] flex flex-wrap justify-start">
       <button
         [ngClass]="selected == 'depression' ? 'select' : null"
         (click)="onTopicSelect('depression')"
@@ -39,15 +60,15 @@
       >
         Work
       </button>
-    </div>
+    </div> -->
   </div>
 
-  <button
+  <!-- <button
     (click)="save()"
     [ngClass]="selected == null ? 'disabled' : 'active'"
     [disabled]="selected == null"
     class="px-6 py-2 absolute bottom-10 right-10 rounded-full shadow-md text-xl m-2 text-white bg-green-500"
   >
     Save
-  </button>
+  </button> -->
 </div>
