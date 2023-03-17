@@ -33,7 +33,7 @@ export class DashboardComponent implements OnInit {
 
   musicSelect(event: any) {
     console.log(event);
-
+    event = event.split(' ').join('').toLowerCase();
     this.showMusic = true;
     this.audioList = this.audioList.filter(
       (audio: any) =>
@@ -49,7 +49,7 @@ export class DashboardComponent implements OnInit {
 
     event.map((music: any) => {
       console.log(music, 'music');
-
+      music.song = music.song.split(' ').join('').toLowerCase();
       this.audioList.push({
         url: `http://18.181.218.216:8080/api/getmusicfile/${music.song}`,
         title: music.song,
