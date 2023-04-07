@@ -16,7 +16,7 @@ export class SinglestoryComponent implements OnInit {
   }
   getStory() {
     this.http
-      .get(`http://18.181.218.216:8080/api/getsinglestory/${this.id}`)
+      .get(`http://52.194.239.150:8080/api/getsinglestory/${this.id}`)
       .subscribe((res: any) => {
         console.log(res);
 

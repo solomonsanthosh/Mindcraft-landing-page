@@ -20,7 +20,7 @@ export class DoctordashboardComponent implements OnInit {
   }
   getRequests() {
     this.http
-      .get(`http://18.181.218.216:8080/api/getrequest/${this.user._id}`)
+      .get(`http://52.194.239.150:8080/api/getrequest/${this.user._id}`)
       .subscribe((res) => {
         console.log(res);
 
@@ -39,7 +39,7 @@ export class DoctordashboardComponent implements OnInit {
       console.log(completeDate.toString());
 
       this.http
-        .put('http://18.181.218.216:8080/api/acceptrequest', {
+        .put('http://52.194.239.150:8080/api/acceptrequest', {
           request_id: request._id,
           time: completeDate,
         })
