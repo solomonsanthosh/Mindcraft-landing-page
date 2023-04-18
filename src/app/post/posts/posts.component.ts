@@ -32,7 +32,7 @@ export class PostsComponent implements OnInit {
 
   getPosts() {
     this.http
-      .get(`http://52.194.239.150:8080/api/getpost/${this.user.topic}`)
+      .get(`http://35.78.205.53:8080/api/getpost/${this.user.topic}`)
       .subscribe((res: any) => {
         this.contents = res;
       });
@@ -43,14 +43,14 @@ export class PostsComponent implements OnInit {
   // }
   deletePost(post: Post) {
     this.http
-      .delete(`http://52.194.239.150:8080/api/deletepost/${post._id}`)
+      .delete(`http://35.78.205.53:8080/api/deletepost/${post._id}`)
       .subscribe((res: any) => {
         this.contents = this.contents.filter((con) => con._id !== post._id);
       });
   }
   getSuccessStories() {
     this.http
-      .get(`http://52.194.239.150:8080/api/getstory/${this.user.topic}`)
+      .get(`http://35.78.205.53:8080/api/getstory/${this.user.topic}`)
       .subscribe((res: any) => {
         this.stories = res;
         console.log(res);
@@ -62,7 +62,7 @@ export class PostsComponent implements OnInit {
       this.showCreate = true;
       this.showStories = false;
       this.http
-        .get(`http://52.194.239.150:8080/api/getpost/${this.user.topic}`)
+        .get(`http://35.78.205.53:8080/api/getpost/${this.user.topic}`)
         .subscribe((res: any) => {
           this.contents = res;
         });
@@ -73,7 +73,7 @@ export class PostsComponent implements OnInit {
       this.showStories = false;
       this.showCreate = false;
       this.http
-        .get(`http://52.194.239.150:8080/api/getpostuser/${this.user._id}`)
+        .get(`http://35.78.205.53:8080/api/getpostuser/${this.user._id}`)
         .subscribe((res: any) => {
           this.contents = res;
           console.log(res);
@@ -86,7 +86,7 @@ export class PostsComponent implements OnInit {
   }
   addStory() {
     this.http
-      .post<any>('http://52.194.239.150:8080/api/createstory', {
+      .post<any>('http://35.78.205.53:8080/api/createstory', {
         topic: this.user.topic,
         owner: this.user._id,
         story: this.story,

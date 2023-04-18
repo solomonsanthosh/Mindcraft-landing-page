@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
   }
   getSuccessStories() {
     this.http
-      .get(`http://52.194.239.150:8080/api/getstory/${this.user.topic}`)
+      .get(`http://35.78.205.53:8080/api/getstory/${this.user.topic}`)
       .subscribe((res: any) => {
         this.stories = res;
         console.log(res);
@@ -38,10 +38,10 @@ export class DashboardComponent implements OnInit {
     this.showMusic = true;
     this.audioList = this.audioList.filter(
       (audio: any) =>
-        audio.url !== `http://52.194.239.150:8080/api/getmusicfile/${event}`
+        audio.url !== `http://35.78.205.53:8080/api/getmusicfile/${event}`
     );
     this.audioList.unshift({
-      url: `http://52.194.239.150:8080/api/getmusicfile/${event}`,
+      url: `http://35.78.205.53:8080/api/getmusicfile/${event}`,
       title: event,
     });
   }
@@ -54,7 +54,7 @@ export class DashboardComponent implements OnInit {
       music.song = music.song.charAt(0).toUpperCase() + music.song.slice(1);
 
       this.audioList.push({
-        url: `http://52.194.239.150:8080/api/getmusicfile/${music.song}`,
+        url: `http://35.78.205.53:8080/api/getmusicfile/${music.song}`,
         title: music.song,
       });
     });

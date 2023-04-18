@@ -73,7 +73,7 @@ export class TopicComponent implements OnInit {
   }
   save() {
     this.http
-      .post<any>('http://52.194.239.150:8080/api/topic', {
+      .post<any>('http://35.78.205.53:8080/api/topic', {
         user: {
           topic: this.topics[this.topicIndex].topic,
           email: this.user.email,

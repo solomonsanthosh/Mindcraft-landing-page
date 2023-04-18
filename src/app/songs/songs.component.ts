@@ -26,7 +26,7 @@ export class SongsComponent implements OnInit {
   }
   private getSongs() {
     this.http
-      .get(`http://52.194.239.150:8080/api/getmusic/${this.user.topic}`)
+      .get(`http://35.78.205.53:8080/api/getmusic/${this.user.topic}`)
       .subscribe((res: any) => {
         this.songs = res;
         this.musicFiles.emit(res);

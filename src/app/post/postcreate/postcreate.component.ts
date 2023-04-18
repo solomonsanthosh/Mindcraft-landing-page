@@ -19,7 +19,7 @@ export class PostcreateComponent implements OnInit {
   }
   addPost() {
     this.http
-      .post<any>('http://52.194.239.150:8080/api/createpost', {
+      .post<any>('http://35.78.205.53:8080/api/createpost', {
         Post: {
           topic: this.user.topic,
           owner: this.user._id,

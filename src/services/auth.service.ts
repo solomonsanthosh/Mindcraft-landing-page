@@ -51,7 +51,7 @@ export class AuthService {
           },
         });
         this.http
-          .post('http://52.194.239.150:8080/api/createuser', user)
+          .post('http://35.78.205.53:8080/api/createuser', user)
           .subscribe((data: any) => {
             console.log(data);
 
@@ -83,7 +83,7 @@ export class AuthService {
       .signInWithEmailAndPassword(user.email, user.password)
       .then((result) => {
         this.http
-          .get(`http://52.194.239.150:8080/api/getsingleuser/${user.email}`)
+          .get(`http://35.78.205.53:8080/api/getsingleuser/${user.email}`)
           .subscribe((res: any) => {
             this.toast.success('Login successful', {
               style: {
@@ -142,7 +142,7 @@ export class AuthService {
       .signInWithPopup(provider)
       .then((result: any) => {
         this.http
-          .post('http://52.194.239.150:8080/api/createuser', {
+          .post('http://35.78.205.53:8080/api/createuser', {
             email: result.user.email,
             name: result.user.displayName,
           })
@@ -212,14 +212,14 @@ export class AuthService {
         });
         this.http
           .get(
-            `http://52.194.239.150:8080/api/getsingleuser/${result.user.email}`
+            `http://35.78.205.53:8080/api/getsingleuser/${result.user.email}`
           )
           .subscribe((res: any) => {
             console.log(res, 'res');
 
             if (res == null) {
               this.http
-                .post('http://52.194.239.150:8080/api/createuser', {
+                .post('http://35.78.205.53:8080/api/createuser', {
                   email: result.user.email,
                   name: result.user.displayName,
                 })

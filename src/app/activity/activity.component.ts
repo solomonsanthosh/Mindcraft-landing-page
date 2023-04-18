@@ -16,7 +16,7 @@ export class ActivityComponent implements OnInit {
   constructor(private http: HttpClient) {}
   private getActivities() {
     this.http
-      .get(`http://52.194.239.150:8080/api/getactivity/${this.user.topic}`)
+      .get(`http://35.78.205.53:8080/api/getactivity/${this.user.topic}`)
       .subscribe((res) => {
         this.activities = res;
       });

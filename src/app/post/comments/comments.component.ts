@@ -27,7 +27,7 @@ export class CommentsComponent implements OnInit {
     console.log(this.route.snapshot.paramMap.get('id'));
 
     this.http
-      .get(`http://52.194.239.150:8080/api/getpostsingle/${this.currentPostId}`)
+      .get(`http://35.78.205.53:8080/api/getpostsingle/${this.currentPostId}`)
       .subscribe((res: any) => {
         console.log(res, 'comment');
 
@@ -37,7 +37,7 @@ export class CommentsComponent implements OnInit {
   addComment() {
     if (this.comment) {
       this.http
-        .post(`http://52.194.239.150:8080/api/createcomment/`, {
+        .post(`http://35.78.205.53:8080/api/createcomment/`, {
           postid: this.currentPostId,
           content: {
             topic: this.user.topic,
