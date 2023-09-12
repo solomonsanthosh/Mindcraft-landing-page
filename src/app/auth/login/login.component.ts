@@ -12,6 +12,7 @@ import { NavService } from 'src/services/nav.service';
 })
 export class LoginComponent implements OnInit {
   user: any;
+
   constructor(private auth: AuthService, private nav: NavService) {}
   ngOnInit(): void {
     this.nav.hide();

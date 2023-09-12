@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
   }
   onSave() {
     this.http
-      .put('http://35.78.205.53:8080/api/updateuser', {
+      .put('https://mindcraft-server.onrender.com/api/updateuser', {
         id: this.user._id,
         name: this.name,
       })

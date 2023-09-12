@@ -20,7 +20,7 @@ export class MeetsComponent {
   }
   getMeets() {
     this.http
-      .get(`http://35.78.205.53:8080/api/getmeets/${this.user._id}`)
+      .get(`https://mindcraft-server.onrender.com/api/getmeets/${this.user._id}`)
       .subscribe((res: any) => {
         console.log(res);
         res.map((element: any) => {
@@ -32,7 +32,7 @@ export class MeetsComponent {
   }
   completeMeet() {
     this.http
-      .put('http://35.78.205.53:8080/api/completerequest', {
+      .put('https://mindcraft-server.onrender.com/api/completerequest', {
         request_id: this.currentMeet._id,
       })
       .subscribe((res) => {

@@ -28,7 +28,7 @@ export class BooksessionComponent implements OnInit {
   }
   getDoctors() {
     this.http
-      .get<any>('http://35.78.205.53:8080/api/getcoach')
+      .get<any>('https://mindcraft-server.onrender.com/api/getcoach')
       .subscribe((res) => {
         console.log(res);
 
@@ -38,7 +38,7 @@ export class BooksessionComponent implements OnInit {
 
   // pay(fee: any) {
   //   this.http
-  //     .post<any>('http://35.78.205.53:8080/api/payment', {
+  //     .post<any>('https://mindcraft-server.onrender.com/api/payment', {
   //       fee: fee,
   //     })
   //     .subscribe((res) => {
@@ -70,7 +70,7 @@ export class BooksessionComponent implements OnInit {
   // }
   session() {
     this.http
-      .post('http://35.78.205.53:8080/api/createrequest', {
+      .post('https://mindcraft-server.onrender.com/api/createrequest', {
         user: this.user._id,
         doctor: this.currentDoctor._id,
       })

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { HotToastService } from '@ngneat/hot-toast';
 import { catchError } from 'rxjs';
+
 function _window(): any {
   return window;
 }
@@ -51,7 +52,7 @@ export class AuthService {
           },
         });
         this.http
-          .post('http://35.78.205.53:8080/api/createuser', user)
+          .post('https://mindcraft-server.onrender.com/api/createuser', user)
           .subscribe((data: any) => {
             console.log(data);
 
@@ -83,7 +84,9 @@ export class AuthService {
       .signInWithEmailAndPassword(user.email, user.password)
       .then((result) => {
         this.http
-          .get(`http://35.78.205.53:8080/api/getsingleuser/${user.email}`)
+          .get(
+            `https://mindcraft-server.onrender.com/api/getsingleuser/${user.email}`
+          )
           .subscribe((res: any) => {
             this.toast.success('Login successful', {
               style: {
@@ -142,7 +145,7 @@ export class AuthService {
       .signInWithPopup(provider)
       .then((result: any) => {
         this.http
-          .post('http://35.78.205.53:8080/api/createuser', {
+          .post('https://mindcraft-server.onrender.com/api/createuser', {
             email: result.user.email,
             name: result.user.displayName,
           })
@@ -212,14 +215,14 @@ export class AuthService {
         });
         this.http
           .get(
-            `http://35.78.205.53:8080/api/getsingleuser/${result.user.email}`
+            `https://mindcraft-server.onrender.com/api/getsingleuser/${result.user.email}`
           )
           .subscribe((res: any) => {
             console.log(res, 'res');
 
             if (res == null) {
               this.http
-                .post('http://35.78.205.53:8080/api/createuser', {
+                .post('https://mindcraft-server.onrender.com/api/createuser', {
                   email: result.user.email,
                   name: result.user.displayName,
                 })

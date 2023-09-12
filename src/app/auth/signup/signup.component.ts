@@ -16,6 +16,7 @@ export class SignupComponent implements OnInit {
     private nav: NavService,
     private toast: HotToastService
   ) {}
+  
   ngOnInit(): void {
     this.nav.hide();
   }

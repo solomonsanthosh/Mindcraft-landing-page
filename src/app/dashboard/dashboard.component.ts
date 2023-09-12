@@ -24,7 +24,9 @@ export class DashboardComponent implements OnInit {
   }
   getSuccessStories() {
     this.http
-      .get(`http://35.78.205.53:8080/api/getstory/${this.user.topic}`)
+      .get(
+        `https://mindcraft-server.onrender.com/api/getstory/${this.user.topic}`
+      )
       .subscribe((res: any) => {
         this.stories = res;
         console.log(res);
@@ -32,16 +34,17 @@ export class DashboardComponent implements OnInit {
   }
 
   musicSelect(event: any) {
-    console.log(event);
+    console.log(event,"event");
     event = event.split(' ').join('').toLowerCase();
     event = event.charAt(0).toUpperCase() + event.slice(1);
     this.showMusic = true;
     this.audioList = this.audioList.filter(
       (audio: any) =>
-        audio.url !== `http://35.78.205.53:8080/api/getmusicfile/${event}`
+        audio.url !==
+        `https://mindcraft-server.onrender.com/api/getmusicfile/${event}`
     );
     this.audioList.unshift({
-      url: `http://35.78.205.53:8080/api/getmusicfile/${event}`,
+      url: `https://mindcraft-server.onrender.com/api/getmusicfile/${event}`,
       title: event,
     });
   }
@@ -54,7 +57,7 @@ export class DashboardComponent implements OnInit {
       music.song = music.song.charAt(0).toUpperCase() + music.song.slice(1);
 
       this.audioList.push({
-        url: `http://35.78.205.53:8080/api/getmusicfile/${music.song}`,
+        url: `https://mindcraft-server.onrender.com/api/getmusicfile/${music.song}`,
         title: music.song,
       });
     });

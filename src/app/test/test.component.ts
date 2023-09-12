@@ -70,7 +70,7 @@ export class TestComponent implements OnInit {
         this.topic = 'ptsd';
       }
       this.http
-        .post<any>('http://35.78.205.53:8080/api/topic', {
+        .post<any>('https://mindcraft-server.onrender.com/api/topic', {
           user: {
             topic: this.topic,
             email: this.user.email,

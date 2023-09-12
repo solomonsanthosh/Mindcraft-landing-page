@@ -20,7 +20,9 @@ export class DoctordashboardComponent implements OnInit {
   }
   getRequests() {
     this.http
-      .get(`http://35.78.205.53:8080/api/getrequest/${this.user._id}`)
+      .get(
+        `https://mindcraft-server.onrender.com/api/getrequest/${this.user._id}`
+      )
       .subscribe((res) => {
         console.log(res);
 
@@ -39,7 +41,7 @@ export class DoctordashboardComponent implements OnInit {
       console.log(completeDate.toString());
 
       this.http
-        .put('http://35.78.205.53:8080/api/acceptrequest', {
+        .put('https://mindcraft-server.onrender.com/api/acceptrequest', {
           request_id: request._id,
           time: completeDate,
         })
