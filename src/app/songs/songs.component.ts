@@ -22,16 +22,12 @@ export class SongsComponent implements OnInit {
 
   constructor(private http: HttpClient) {}
 
-
-  
   onMusicSelect(event: any) {
     this.musicSelected.emit(event);
   }
   private getSongs() {
     this.http
-      .get(
-        `https://mindcraft-server.onrender.com/api/getmusic/${this.user.topic}`
-      )
+      .get(`http://13.231.177.120/api/getmusic/${this.user.topic}`)
       .subscribe((res: any) => {
         this.songs = res;
         this.musicFiles.emit(res);

@@ -19,7 +19,7 @@ export class PostcreateComponent implements OnInit {
   }
   addPost() {
     this.http
-      .post<any>('https://mindcraft-server.onrender.com/api/createpost', {
+      .post<any>('http://13.231.177.120/api/createpost', {
         Post: {
           topic: this.user.topic,
           owner: this.user._id,

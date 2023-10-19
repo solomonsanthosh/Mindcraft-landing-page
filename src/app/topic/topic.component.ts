@@ -73,7 +73,7 @@ export class TopicComponent implements OnInit {
   }
   save() {
     this.http
-      .post<any>('https://mindcraft-server.onrender.com/api/topic', {
+      .post<any>('http://13.231.177.120/api/topic', {
         user: {
           topic: this.topics[this.topicIndex].topic,
           email: this.user.email,

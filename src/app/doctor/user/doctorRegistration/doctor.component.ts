@@ -46,7 +46,7 @@ export class DoctorComponent {
         .then((response) => {
           console.log(response, 'res');
           this.http
-            .post('https://mindcraft-server.onrender.com/api/verifycoach', {
+            .post('http://13.231.177.120/api/verifycoach', {
               name: form.form.value.name.trim(),
               email: form.form.value.email.trim(),
               about: form.form.value.about,
